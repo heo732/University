@@ -1,0 +1,14 @@
+﻿library("ggplot2")
+
+d <- cars
+s <- d$speed
+help(d)
+help(s)
+# Графік абсолютних частот
+qplot(data=d, speed, xlab="Car speed", ylab="Number of cars", main="1920 data")
+# Графік щільності розподілу
+hist(s, probability=T, col="green")
+mean(s)
+var(s)
+median(s)
+sd(s)

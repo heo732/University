@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{DA7A21FA-8162-4350-AD77-A8D1B671F3ED}") = "RProject1", "RProject1.rxproj", "{56B499C2-3275-4622-8E17-3ABCB5E1016C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56B499C2-3275-4622-8E17-3ABCB5E1016C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56B499C2-3275-4622-8E17-3ABCB5E1016C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56B499C2-3275-4622-8E17-3ABCB5E1016C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56B499C2-3275-4622-8E17-3ABCB5E1016C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {157E4D6B-0398-4082-AA4D-A9BD8A2C791E}
+	EndGlobalSection
+EndGlobal
