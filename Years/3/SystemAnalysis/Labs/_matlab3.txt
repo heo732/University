@@ -1,0 +1,44 @@
+///////////
+1
+///////////
+
+x= 0.2:0.1:10;
+f=log(x); g=x.*log(x);
+
+figure; plot(x,f,'G*--'); title('f(x)'); xlabel('x'); ylabel('y'); legend('f(x)',2); grid on
+figure; plot(x,g,'R.-'); title('g(x)'); xlabel('x'); ylabel('y'); legend('g(x)',4); grid on
+
+figure; plot(x,f,'G*--',x,g,'R.-'); title('f(x), g(x)'); xlabel('x'); ylabel('y'); legend('f(x)','g(x)',4); grid on
+
+figure; plotyy(x,f,x,g); title('f(x) & g(x)'); xlabel('x'); ylabel('y'); legend('f(x)','g(x)',4); grid on
+
+
+
+///////////
+2
+///////////
+
+t=-10*pi:pi/500:10*pi; x=cos(t); y=sin(sin(t));
+
+figure; plot(t,x,t,y); grid on
+
+comet3(x,y,t); grid on
+
+
+
+///////////
+3
+///////////
+
+[x,y]=meshgrid(-1:0.1:1);
+z=(x.^2 .* y.^2 + 2 .* x .* y - 3)./(x.^2 + y.^2 + 1);
+
+figure; mesh(x,y,z); colorbar; colormap(cool);
+
+figure; surf(x,y,z); colorbar; colormap(hsv);
+
+figure; [CMatr,h]=contour(x,y,z,15); colorbar; colormap(jet); clabel(CMatr,h);
+
+figure; surfl(x,y,z); colorbar; colormap(winter); shading interp;
+
+figure; subplot(2,2,1); mesh(x,y,z); colorbar; subplot(2,2,2); surf(x,y,z); colorbar; subplot(2,2,3); [CMatr,h]=contour(x,y,z,15); colorbar; clabel(CMatr,h); subplot(2,2,4); surfl(x,y,z); colorbar; colormap(hsv); shading interp;

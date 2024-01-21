@@ -1,0 +1,28 @@
+A = [6 -1 10 -1;2 1 10 7;3 -2 -2 -1;1 -12 2 -1];
+
+%% obumovlenist
+disp(cond(A))
+
+B = [158;128;7;17];
+
+%% vyrishuvach
+X = A \ B
+
+
+
+%% Symbolyc Math
+[x1,x2,x3,x4] = solve('6*x1 - x2 + 10*x3 - x4 = 158','2*x1 + x2 + 10*x3 + 7*x4 = 128','3*x1 - 2*x2 - 2*x3 - x4 = 7','x1 - 12*x2 + 2*x3 - x4 = 17')
+
+
+
+%% Kramer
+disp(det(A))
+A1 = A; A2 = A; A3 = A; A4 = A;
+A1(:,1) = B; A2(:,2) = B; A3(:,3) = B; A4(:,4) = B;
+X = [det(A1)/det(A);det(A2)/det(A);det(A3)/det(A);det(A4)/det(A)]
+
+
+%% LU
+[L,U] = lu(A); X = U \ (L \ B)
+
+disp( A * X - B )

@@ -1,0 +1,10 @@
+%% Task_1
+[x,y] = solve('log(x) + (x+1)^3 = 0', 'sin(x+1) - y = 1.2')
+
+%% Task_2
+fun = inline('x * exp(2*x) - 4');
+[x,f,e_flag,inform] = fzero(fun, 0, optimset('TolX', 0.0001))
+[x,f,e_flag,inform] = fsolve(fun, 0, optimset('TolX', 0.0001, 'Display', 'off'))
+
+%% Task_3
+figure; fplot('[0.8 - cos(x+0.5), asin(1.6 + 2*x)]', [-2 7]); grid; ginput

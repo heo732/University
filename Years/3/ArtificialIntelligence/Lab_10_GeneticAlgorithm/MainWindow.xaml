@@ -1,0 +1,111 @@
+﻿<Window x:Class="WpfProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+        
+        Title="Lab_10  |  Класичний генетичний алгоритм" Height="450" Width="800"
+        Loaded="Window_Loaded"
+        Background="#D3D3D7"
+        WindowState="Maximized">
+    
+    
+
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Kristen" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+    </Window.Resources>
+    
+    
+
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Функція" HorizontalAlignment="Center"/>
+            <ComboBox Name="comboBoxFunction" 
+                      HorizontalAlignment="Center" 
+                      SelectionChanged="ComboBoxFunction_SelectionChanged"
+                      FontFamily="Harrington"
+                      FontSize="20">
+                <ComboBoxItem Content="f(x) = -2x^2 - 1"/>
+                <ComboBoxItem Content="f(x) = tra-ta-ta"/>
+                <ComboBoxItem Content="f(x) = batman"/>
+            </ComboBox>
+        </StackPanel>
+
+        <WindowsFormsHost Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <dvc:Chart x:Name="chart" />
+        </WindowsFormsHost>
+        
+        <!-- Parameters for GeneticAlgorithm -->
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label Content="Число хромосом (особин) у популяції"/>
+            <WindowsFormsHost>
+                <wf:NumericUpDown x:Name="numericUpDown_populationSize" Minimum="1" Maximum="1000000" Increment="10" Value="300" DecimalPlaces="0"/>
+            </WindowsFormsHost>
+            <Label Content="Число генів у хромосомі"/>
+            <WindowsFormsHost>
+                <wf:NumericUpDown x:Name="numericUpDown_numberOfGenesInChromosome" Minimum="2" Maximum="64" Increment="1" Value="10" DecimalPlaces="0"/>
+            </WindowsFormsHost>
+            <Label x:Name="label_recomendNumberOfGenesInChromosome" FontSize="15" Foreground="Gray" Content="Рекомендовано:  8"/>
+            <Label Content="Ймовірність схрещування"/>
+            <WindowsFormsHost>
+                <wf:NumericUpDown x:Name="numericUpDown_probabilityCrossover" Minimum="0.01" Maximum="1" Increment="0.1" Value="1" DecimalPlaces="2"/>
+            </WindowsFormsHost>
+            <Label Content="Ймовірність мутації"/>
+            <WindowsFormsHost>
+                <wf:NumericUpDown x:Name="numericUpDown_probabilityMutation" Minimum="0.01" Maximum="1" Increment="0.1" Value="0.1" DecimalPlaces="2"/>
+            </WindowsFormsHost>
+            <Label Content="Межі пошуку"/>
+            <WrapPanel>
+                <WindowsFormsHost>
+                    <wf:NumericUpDown x:Name="numericUpDown_borderLeft" Minimum="-1000000" Maximum="1000000" Increment="10" Value="-100" DecimalPlaces="1" ValueChanged="numericUpDown_borderLeft_ValueChanged"/>
+                </WindowsFormsHost>
+                <WindowsFormsHost>
+                    <wf:NumericUpDown x:Name="numericUpDown_borderRight" Minimum="-1000000" Maximum="1000000" Increment="10" Value="100" DecimalPlaces="1" ValueChanged="numericUpDown_borderLeft_ValueChanged"/>
+                </WindowsFormsHost>
+            </WrapPanel>
+            <Label Content="Ліміт поколінь"/>
+            <WindowsFormsHost>
+                <wf:NumericUpDown x:Name="numericUpDown_limitGeneration" Minimum="1" Maximum="10000" Increment="10" Value="100" DecimalPlaces="0"/>
+            </WindowsFormsHost>
+            <Label Content="Ліміт часу (секунди)"/>
+            <WindowsFormsHost>
+                <wf:NumericUpDown x:Name="numericUpDown_limitTime" Minimum="1" Maximum="10000" Increment="10" Value="10" DecimalPlaces="0"/>
+            </WindowsFormsHost>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="button_Search" Content="Пошук" 
+                    FontSize="25" Width="100" Height="50"
+                    Click="button_Search_Click"/>
+        </StackPanel>
+        
+        <!-- Results -->
+        <DockPanel Grid.Row="2" Grid.Column="2">
+            <StackPanel DockPanel.Dock="Top" Margin="30">
+                <Label x:Name="label_ResultArticle" Content="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label x:Name="label_ResultPoint" Content="(-,-)" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+            <Label x:Name="label_ResultTime" Content="Час виконання:  " DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        </DockPanel>
+
+    </Grid>
+    
+    
+</Window>

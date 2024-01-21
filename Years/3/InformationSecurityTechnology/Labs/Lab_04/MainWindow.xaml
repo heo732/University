@@ -1,0 +1,60 @@
+﻿<Window x:Class="Lab_03.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_03"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Lab_04. S-DES" Height="525" Width="800"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        x:Name="window">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Width="792" Height="496">
+            <TabItem Header="Шифрування">
+                <Grid Background="WhiteSmoke">
+                    <Grid x:Name="gridKeys" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="128" Margin="129,10,0,0">
+                        <Label Content="Ключ (10 біт)" HorizontalAlignment="Center" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.492,0.5" Margin="10,0,0,0"/>
+                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,17,0,0" Width="123" Height="34">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="textBoxKey" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="30" TextAlignment="Right" Width="92" Text="1011011100"/>
+                            </StackPanel>
+                        </Label>
+                    </Grid>
+                    <TextBox x:Name="textBoxIn" Height="364" VerticalAlignment="Top" Width="370" Margin="10,94,0,0" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+                    <Button x:Name="buttonOpenFileIn" Margin="10,58,746,379" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="ButtonOpenFileIn_Click">
+                        <Image Source="file.png"/>
+                    </Button>
+                    <TextBox x:Name="textBoxOut" Height="364" VerticalAlignment="Top" Width="370" Margin="406,94,0,0" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+                    <Button x:Name="buttonSaveFileOut" Margin="746,58,10,379" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="ButtonSaveFileOut_Click">
+                        <Image Source="save.png"/>
+                    </Button>
+                    <Button x:Name="buttonEncrypt" Content="Зашифрувати" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="349,59,0,0" Click="ButtonEncrypt_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Розшифровка">
+                <Grid Background="WhiteSmoke">
+                    <Grid x:Name="gridKeys_Decrypt" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="128" Margin="129,10,0,0">
+                        <Label Content="Ключ (10 біт)" HorizontalAlignment="Center" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.492,0.5" Margin="10,0,0,0"/>
+                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,17,0,0" Width="123" Height="34">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="textBoxKey_Decrypt" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="30" TextAlignment="Right" Width="92" Text="1011011100"/>
+                            </StackPanel>
+                        </Label>
+                    </Grid>
+                    <TextBox x:Name="textBoxIn_Decrypt" Height="364" VerticalAlignment="Top" Width="370" Margin="10,94,0,0" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+                    <Button x:Name="buttonOpenFileIn_Decrypt" Margin="10,58,746,379" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="ButtonOpenFileIn_Decrypt_Click">
+                        <Image Source="file.png"/>
+                    </Button>
+                    <TextBox x:Name="textBoxOut_Decrypt" Height="364" VerticalAlignment="Top" Width="370" Margin="406,94,0,0" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+                    <Button x:Name="buttonSaveFileOut_Decrypt" Margin="746,58,10,379" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="ButtonSaveFileOut_Decrypt_Click">
+                        <Image Source="save.png"/>
+                    </Button>
+                    <Button x:Name="buttonDecrypt" Content="Розшифрувати" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="349,59,0,0" Click="ButtonDecrypt_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

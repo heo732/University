@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfSharpGL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SharpGL WPF Application" Height="350" Width="525" 
+        xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF"
+        
+        ResizeMode="NoResize"    
+        WindowStyle="None"
+        WindowState="Maximized"
+        Closed="Window_Closed">
+    
+    <Grid>
+        
+        <!-- The OpenGL control provides a OpenGL drawing surface. -->
+        <sharpGL:OpenGLControl 
+            OpenGLVersion="OpenGL2_1"
+            Name="openGLControl" OpenGLDraw="openGLControl_OpenGLDraw" 
+            OpenGLInitialized="openGLControl_OpenGLInitialized" Resized="openGLControl_Resized"
+            RenderContextType="FBO" FrameRate="60"/>
+        
+    </Grid>
+    
+</Window>

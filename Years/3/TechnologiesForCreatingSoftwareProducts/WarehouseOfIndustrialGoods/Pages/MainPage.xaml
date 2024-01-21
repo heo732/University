@@ -1,0 +1,32 @@
+﻿<Page x:Class="WarehouseOfIndustrialGoods.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WarehouseOfIndustrialGoods.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage" Margin="20">
+
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="MainButtonStyle">
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <!--<Button Name="suppliesButton" Content="Постачання" Click="SuppliesButton_Click" Grid.Column="1" Style="{StaticResource MainButtonStyle}" />-->
+        <Button Name="productsButton" Content="Продукти" Click="ProductsButton_Click" Grid.Column="1" Grid.Row="1" Style="{StaticResource MainButtonStyle}" />
+    </Grid>
+</Page>

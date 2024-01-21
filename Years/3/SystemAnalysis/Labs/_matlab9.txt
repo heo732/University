@@ -1,0 +1,23 @@
+%% Task_1
+figure; ezplot('2*x + y - 5'); hold on; grid on; ezplot('2*x - y + 4'); ezplot('5*x - 8*y + 14'); axis([-2 2 0 5]); title('');
+AB = inline('5 - 2*x');
+BC = inline('2*x + 4');
+AC = inline('(5*x + 14) / 8');
+%% A (right)
+x = fzero(@lab9_fsub, 1, optimset, AB, AC); disp(['A(', num2str(x), '; ', num2str(AB(x)), ')'])
+%% B (top)
+x = fzero(@lab9_fsub, 0, optimset, AB, BC); disp(['B(', num2str(x), '; ', num2str(AB(x)), ')'])
+%% C (left)
+x = fzero(@lab9_fsub, -2, optimset, BC, AC); disp(['C(', num2str(x), '; ', num2str(AC(x)), ')'])
+
+
+%% Task_2
+figure; ezplot('x^2/36 + y^2/4 = 1'); hold on; ezplot('y = 6*x - 3*x^3'); title(''); grid on;
+crossing = fsolve(@lab9_task2,[-0.5 -2],optimset('Display', 'off'))
+crossing = fsolve(@lab9_task2,[0.5 2],optimset('Display', 'off'))
+
+
+%% Task_3
+a = 3; b = 4; t = 0:2*pi/1000:2*pi; x = a*cos(t); y = b*sin(t);
+figure; plot(x,y); grid on; axis([-4 4 -5 5]);
+Area = quad('3.*cos(t) .* 4.*cos(t)', -3, 3)

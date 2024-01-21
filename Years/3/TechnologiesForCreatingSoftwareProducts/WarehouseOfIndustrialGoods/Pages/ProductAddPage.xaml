@@ -1,0 +1,54 @@
+﻿<Page x:Class="WarehouseOfIndustrialGoods.Pages.ProductAddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WarehouseOfIndustrialGoods.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductAddPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="15*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="15*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Button Name="productAddBackButton" Grid.Row="2" Click="ProductAddBackButton_Click">
+            <Image Source="/Images/BackArrow.png" />
+        </Button>
+
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button Name="productAddConfirmButton" Grid.Column="9" Click="ProductAddConfirmButton_Click">
+                <Image Source="/Images/Confirm.png" />
+            </Button>
+            <Button Name="productAddClearButton" Grid.Column="8" Click="ProductAddClearButton_Click">
+                <Image Source="/Images/Clear.png" />
+            </Button>
+        </Grid>
+
+        <StackPanel Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Background="Silver">
+                <Label Content="Продукт" />
+                <TextBox Width="400" Name="productAddNameTextBox" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
