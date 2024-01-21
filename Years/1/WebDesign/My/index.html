@@ -1,0 +1,460 @@
+<DOCTYPE! html>
+<html>
+	<head>
+		<title>Головна. dDealer</title>
+		<meta charset="utf-8">
+		<meta name="Author" lang="ua" content="Бужак Андрій Васильович">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="Description" content="Головна">
+		<meta name="Keywords" content="комп'ютери, техніка, головна, dDealer">
+		<link rel="stylesheet" href="style.css">	
+    <link rel="icon" href="images/icon.png" sizes="16x16" type="image/png">
+    
+    <style>
+      canvas{
+        border: solid white 2px;
+      }
+      .btn{      
+        display: inline-block;
+        width: 200px;
+        text-align: center;
+      }
+      .btn:hover{
+        cursor: pointer;
+      }
+    </style>    
+    
+    <script>
+      var  cnv,ctx;
+      var k=Math.PI/6;
+      var x_last,y_last,f_last;
+      
+      window.onload = function() 
+      {
+        cnv = document.getElementById("Canvas1");
+        ctx = cnv.getContext("2d");
+        cnv.addEventListener("mousedown", doMouseDown, false);
+      }
+      
+      function doMouseDown(event) //stopDrawing()
+      {        
+        var w=50;
+        var xe,ye;
+        //визначення координат кліка відносно документа та канви
+        xe=event.clientX+document.body.scrollLeft+document.documentElement.scrollLeft;
+        ye=event.clientY+document.body.scrollTop+document.documentElement.scrollTop;
+        xe-=cnv.offsetLeft;
+        ye-=cnv.offsetTop;
+        
+        x_last=xe;
+        y_last=ye;
+        f_last=-1;
+        
+        //
+        var x=[xe,xe+w,xe,xe-w],y=[ye,ye+w,ye+2*w,ye+w];
+        //
+        
+        
+        var tmp_x,tmp_y;
+        for(var i=0;i<4;i++)
+        {
+          tmp_x=((x[i]-xe)*Math.cos(k))-((y[i]-ye)*Math.sin(k))+xe;
+          tmp_y=((x[i]-xe)*Math.sin(k))+((y[i]-ye)*Math.cos(k))+ye;
+          x[i]=tmp_x;
+          y[i]=tmp_y;
+        }
+        k+=Math.PI/6;
+        //
+        
+        ctx.beginPath();
+        ctx.lineWidth=5;
+        ctx.moveTo(x[0],y[0]);
+        ctx.lineTo(x[1],y[1]);
+        ctx.lineTo(x[2],y[2]);
+        ctx.lineTo(x[3],y[3]);
+        ctx.closePath();
+        
+        var gradient=ctx.createRadialGradient(xe,ye,w,xe,ye,w+50);
+        gradient.addColorStop(0,"green");
+        gradient.addColorStop(0.75,"red");
+        gradient.addColorStop(1,"purple");
+        ctx.fillStyle=gradient;
+        ctx.strokeStyle="yellow";
+        ctx.fill();
+        ctx.stroke();
+      }
+      
+      function GetRandomStroke()
+      {
+        var stroke=Math.floor(Math.random()*11);
+        
+        var c=Math.floor(Math.random()*9)+2;
+        ctx.lineWidth=c;
+        
+        switch(stroke)
+        {
+          case 0:
+          {            
+            ctx.strokeStyle="brown";
+            break;
+          }
+          case 1:
+          {
+            ctx.strokeStyle="black";
+            break;
+          }
+          case 2:
+          {
+            ctx.strokeStyle="silver";
+            break;
+          }
+          case 3:
+          {
+            ctx.strokeStyle="white";
+            break;
+          }
+          case 4:
+          {
+            ctx.strokeStyle="orange";
+            break;
+          }
+          case 5:
+          {
+            ctx.strokeStyle="yellow";
+            break;
+          }
+          case 6:
+          {
+            ctx.strokeStyle="pink";
+            break;
+          }
+          case 7:
+          {
+            ctx.strokeStyle="purple";
+            break;
+          }
+          case 8:
+          {
+            ctx.strokeStyle="green";
+            break;
+          }
+          case 9:
+          {
+            ctx.strokeStyle="red";
+            break;
+          }
+          case 10:
+          {
+            ctx.strokeStyle="blue";
+            break;
+          }
+        }
+      }
+      
+      function GetRandomFill(x,y,w)
+      {
+        var fill=Math.floor(Math.random()*13);
+        
+        var gradient1=ctx.createLinearGradient(x,y,x,y+w);
+            gradient1.addColorStop(0,"silver");
+            gradient1.addColorStop(0.4,"grey");
+            gradient1.addColorStop(0.6,"gold");
+        
+        var gradient2=ctx.createLinearGradient(x,y,x+w,y);
+            gradient2.addColorStop(0,"red");
+            gradient2.addColorStop(0.4,"green");
+            gradient2.addColorStop(0.6,"blue");
+        
+        var gradient3=ctx.createRadialGradient(x,y,w,x,y,w+w);
+            gradient3.addColorStop(0,"purple");
+            gradient3.addColorStop(0.4,"white");
+            gradient3.addColorStop(0.6,"pink");
+            
+        var gradient4=ctx.createRadialGradient(x,y,w,x,y,w+w);
+            gradient4.addColorStop(0,"black");
+            gradient4.addColorStop(0.4,"red");
+            gradient4.addColorStop(0.6,"gold");    
+        
+        switch(fill)
+        {
+          case 0:
+          {
+            ctx.fillStyle=gradient1;
+            break;
+          }
+          case 1:
+          {
+            ctx.fillStyle="silver";
+            break;
+          }          
+          case 2:
+          {
+            ctx.fillStyle="yellow";
+            break;
+          }
+          case 3:
+          {
+            ctx.fillStyle="white";
+            break;
+          }
+          case 4:
+          {
+            ctx.fillStyle="orange";
+            break;
+          }
+          case 5:
+          {
+            ctx.fillStyle="blue";
+            break;
+          }
+          case 6:
+          {
+            ctx.fillStyle="red";
+            break;
+          }
+          case 7:
+          {
+            ctx.fillStyle="green";
+            break;
+          }
+          case 8:
+          {
+            ctx.fillStyle="purple";
+            break;
+          }
+          case 9:
+          {
+            ctx.fillStyle=gradient1;
+            break;
+          }
+          case 10:
+          {
+            ctx.fillStyle=gradient2;
+            break;
+          }
+          case 11:
+          {
+            ctx.fillStyle=gradient3;
+            break;
+          }
+          case 12:
+          {
+            ctx.fillStyle=gradient4;
+            break;
+          }
+        }
+      }
+      
+      function AddRandomFigure()
+      { 
+        var x,y;
+        ctx.beginPath();        
+        var r=Math.floor(Math.random()*5);
+        
+        x=Math.random()*801;
+	      y=Math.random()*601;
+        
+        x_last=x;
+        y_last=y;
+        
+        switch(r)
+        {
+          case 0:
+          {             
+            GetRandomFill(x,y,100);
+            GetRandomStroke();
+            ctx.moveTo(x,y);
+            ctx.lineTo(x+50,y+50);
+            ctx.lineTo(x,y+100);
+            ctx.lineTo(x-50,y+50);            
+            f_last=0;
+            break;
+          }
+          case 1:
+          {
+            GetRandomFill(x,y,35);
+            GetRandomStroke();
+            ctx.moveTo(x,y);
+            ctx.lineTo(x+35,y+30);
+            ctx.lineTo(x-35,y+30);
+            f_last=1;
+            break;
+          }
+          case 2:
+          {
+            GetRandomFill(x,y,50);
+            GetRandomStroke();
+            ctx.ellipse(x,y,40,40,0,2*Math.PI,50);
+            f_last=2;
+            break;
+          }
+          case 3:
+          {
+            GetRandomFill(x,y,40);
+            GetRandomStroke();
+            ctx.rect(x,y,10,40);
+            f_last=3;
+            break;
+          }
+          case 4:
+          {
+            GetRandomFill(x,y,60);
+            GetRandomStroke();
+            ctx.rect(x,y,60,60);
+            f_last=4;
+            break;
+          }
+        }        
+        
+        ctx.closePath();
+        ctx.fill();
+				ctx.stroke(); 
+      }    
+      
+      function ClearCanvas()
+      {        
+        ctx.clearRect(0,0,cnv.width,cnv.height);
+      }
+      
+      function ClearLastFigure()
+      {
+        switch(f_last)
+        {
+          case -1:
+          {
+            ctx.clearRect(x_last-110,y_last-110,220,220);
+            break;
+          }
+          case 0:
+          {
+            ctx.clearRect(x_last-60,y_last-10,120,120);
+            break;
+          }
+          case 1:
+          {
+            ctx.clearRect(x_last-50,y_last-10,115,50);
+            break;
+          }
+          case 2:
+          {
+            ctx.clearRect(x_last-50,y_last-50,120,120);
+            break;
+          }
+          case 3:
+          {
+            ctx.clearRect(x_last-10,y_last-10,30,60);
+            break;
+          }
+          case 4:
+          {            
+            ctx.clearRect(x_last-10,y_last-10,80,80);
+            break;
+          }
+        }
+      }
+    </script>
+
+    
+    
+	</head>
+	<body class="body1"> 
+
+		<header class="header1">    
+			<p class="header_line">_______________</p>
+      <p class="header_name">dDealer</p>			
+      <nav class="nav1">
+				<a href="index.html" target="_self">Головна</a>&nbsp&nbsp  
+				<a href="news.html" target="_self">Новини</a>&nbsp&nbsp  
+        <a href="goods.html" target="_self">Товари</a>&nbsp &nbsp 				
+				<a href="forms.html" target="_self">Замовлення</a>&nbsp  &nbsp
+				<a href="spiski.html" target="_self">Інформація</a>&nbsp &nbsp 
+				<a href="firma.html" target="_self">Компанія</a>&nbsp &nbsp 
+        <a href="author.html" target="_self">Автор</a>        
+      </nav>      
+    </header>
+    
+		<div class="content">
+			
+    <svg id="svg1" viewBox="0 0 800 400" transform="translate(105,50) rotate(0) scale(0.8)">    
+      
+      
+      <rect x="235" y="330" rx="10" ry="10" width="365" height="120" fill="#93278F" stroke="#603813" stroke-width="5"/>
+      
+      
+      <polygon fill="#808080" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="310,326.5 523,326.5 508,308.5 327,308.5 "/>
+      
+      
+      <rect x="279.5" y="110.5" fill="#808080" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="274" height="200"/>
+      
+      
+      <linearGradient id="Gradient1" gradientUnits="userSpaceOnUse" x1="314.0005" y1="313" x2="518.0005" y2="109">
+	      <stop  offset="0.1515" style="stop-color:#003063"/>
+	      <stop  offset="0.2499" style="stop-color:#11535A"/>
+	      <stop  offset="0.4206" style="stop-color:#2C8B4B"/>
+	      <stop  offset="0.503" style="stop-color:#36A145"/>
+	      <stop  offset="0.5541" style="stop-color:#3D9B43"/>
+	      <stop  offset="0.6298" style="stop-color:#518B3F"/>
+	      <stop  offset="0.7208" style="stop-color:#727137"/>
+	      <stop  offset="0.8238" style="stop-color:#A04C2D"/>
+	      <stop  offset="0.9353" style="stop-color:#DA1E1F"/>
+	      <stop  offset="1" style="stop-color:#FF0017"/>
+      </linearGradient>
+      
+      
+      <rect x="296" y="127" fill="url(#Gradient1)" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="240" height="168"/>
+
+      
+      <circle cx="581" cy="349" r="7" fill="#B3B3B3"  stroke="#333333" stroke-width="3" />
+  
+      
+      <line fill="#FF0000" stroke="#FF0000" stroke-width="8" stroke-miterlimit="10" x1="279" y1="349" x2="378" y2="349"/>
+      
+      
+      <line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" x1="372" y1="349" x2="285" y2="349"/>
+
+      
+      <circle cx="387" cy="349" r="4"/>
+
+		  
+      <path fill="#FFFFFF" d="M545.699,376.32c-2.236,7.045-3.271,14.347-3.958,21.688c-0.353,3.771-0.524,7.559-0.662,11.342 c-0.154,4.213,0.438,8.591-0.528,12.72c-1.027,4.392,5.722,6.256,6.75,1.861c1.687-7.209,0.701-15.209,1.181-22.605 c0.508-7.835,1.588-15.645,3.968-23.144C553.818,373.866,547.06,372.034,545.699,376.32L545.699,376.32z"/>
+	
+      
+		  <path fill="#FFFFFF" d="M545.708,400.069c-2.646-6.852-9.031-10.765-16.375-10.236c-8.052,0.579-11.291,7.397-12.073,14.498	c-1.551,14.09,13.434,28.467,26.215,18.477c3.555-2.777-1.438-7.694-4.949-4.949c-7.155,5.592-13.996-4.679-14.385-11.137 c-0.192-3.186,0.463-7.354,3.326-9.199c3.935-2.534,9.961,0.445,11.491,4.408C540.566,406.095,547.337,404.287,545.708,400.069 L545.708,400.069z"/>
+	
+	    
+		  <path fill="#FFFFFF" d="M554.916,376.917c-0.105,8.195-1.368,16.293-1.88,24.462c-0.449,7.186-1.917,14.372-0.795,21.552 c0.695,4.449,7.44,2.554,6.75-1.861c-1.01-6.461,0.766-13.217,1.045-19.69c0.354-8.182,1.774-16.26,1.88-24.462 C561.974,372.4,554.974,372.406,554.916,376.917L554.916,376.917z"/>
+	
+	    
+		  <path fill="#FFFFFF" d="M555.525,424.246c5.525,4.897,13.739,6.148,20.898,5.872c8.124-0.313,12.462-6.617,13.731-14.05 c1.386-8.117,0.036-15.973-4.776-22.718c-5.722-8.019-14.382-12.042-21.928-17.908c-3.518-2.735-8.51,2.182-4.949,4.949 c10.119,7.868,24.911,13.979,25.168,28.879c0.084,4.868-0.389,11.992-5.895,13.666c-4.84,1.472-13.549-0.314-17.301-3.64 C557.11,416.314,552.141,421.246,555.525,424.246L555.525,424.246z"/>
+      
+      
+      <polygon fill="white" stroke="#603813" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="330,370 350,400 330,430 310,400 "/>
+      
+	
+    </svg>
+    
+    <audio src="images\audio1.wav" controls preload loop></audio>
+    <br>
+    <br>
+    
+    
+    
+    <canvas id="Canvas1" width="800" height="600">Браузер не підтримує тег canvas
+    </canvas>
+    <br>
+    <h3 OnClick="AddRandomFigure()" class="btn">Додати фігуру</h3>
+    <h3 OnClick="ClearCanvas()" class="btn">Очистити поле</h3>
+    <h3 OnClick="ClearLastFigure()" class="btn">Видалити фігуру, що додавалась останньою</h3>
+    <br>
+    <br>
+    
+    
+    
+		</div>
+
+		<footer class="footer1">
+			dDealer ♦ 2017
+		</footer>
+
+	</body>
+</html>

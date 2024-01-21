@@ -1,0 +1,19 @@
+*{
+	font: "Calibri", adjust;
+}
+#ps{
+	color: green;
+}
+tr>td+td{
+	color: #6d0f1c;
+	font: ;
+}
+h3[dir]{
+	color: white;
+}
+h4[title="*)"]{
+	color: black;
+}
+p[align~=left]{
+	color: white;
+}

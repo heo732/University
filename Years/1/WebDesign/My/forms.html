@@ -1,0 +1,128 @@
+<DOCTYPE! html>
+<html>
+	<head>
+		<title>Форма замовлення</title>
+		<meta charset="utf-8">
+		<meta name="Author" lang="ua" content="Бужак Андрій Васильович">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="Description" content="Товари">
+		<meta name="Keywords" content="комп'ютери, техніка, товари, dDealer">
+		<link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/icon.png" sizes="16x16" type="image/png">
+	</head>
+	<body class="body1">
+  
+		<header class="header1">    
+			<p class="header_line">_______________</p>
+      <p class="header_name">dDealer</p>			
+      <nav class="nav1">
+				<a href="index.html" target="_self">Головна</a>&nbsp&nbsp  
+				<a href="news.html" target="_self">Новини</a>&nbsp&nbsp  
+        <a href="goods.html" target="_self">Товари</a>&nbsp &nbsp 				
+				<a href="forms.html" target="_self">Замовлення</a>&nbsp  &nbsp
+				<a href="spiski.html" target="_self">Інформація</a>&nbsp &nbsp 
+				<a href="firma.html" target="_self">Компанія</a>&nbsp &nbsp 
+        <a href="author.html" target="_self">Автор</a>        
+      </nav>      
+    </header>
+
+
+
+		<div class="content">
+			<h1 class="h_1">Замовлення товару</h1>
+			
+			<form name="form1"class="form1" lang="ua" novalidate="novalidate" enctype="multipart/form-data" action="#">
+				<select size="3" name="sposib">
+					<option disabled>Як ви хочете підібрати комп'ютер?</option>
+					<option value="За назвою" id="v1" OnClick="Choose">За назвою</option>
+					<option selected value="За набором комплектуючих" id="v2" OnClick="Choose">За набором комплектуючих</option>
+				</select><br><br>
+				
+				<fieldset id="var1">
+					<legend class="legend1">За назвою</legend>
+				<label class="label2"><strong>Назва комп'ютера: </strong></label>
+				<input required name="inp1" dir="ltr" minlength="" formmethod="post" formenctype="multipart/form-data" type="" src="" min="" size="" required width="" height="" multiple/><br><br>
+				<label class="label2"><strong>Ціновий сегмент:</strong> </label><br><br>
+				<label class="label3"><input type="radio" name="cina" value="1">Дешево і неякісно <meter title="Дешево" min="0" max="100" class="" id="" value="10" high="15" low="5"></label>				
+				<label class="label3"><input type="radio" name="cina" value="2" checked>Універсальний вибір <meter title="Розумно" min="0" max="100" class="" id="" value="50" high="30" low="80"></label>				
+				<label class="label3"><input type="radio" name="cina" value="3">Дорого та професійно <meter title="Переплата" min="0" max="100" class="" id="" value="100" high="30" low="80"></label>
+				</fieldset>
+				<br><br>
+				
+				<fieldset id="var2">
+					<legend class="legend1">За параметрами комплектуючих</legend>
+					<label class="label2"><strong>Процесор: </strong></label>
+					<input list="proc" required>
+						<datalist id="proc">
+							<option value="Shurup core i3 6317">Shurup core i3 6317</option>
+							<option value="GDZ Parsilon G10">GDZ Parsilon G10</option>
+							<option value="Shurup core i7 7700k">Shurup core i7 7700k</option>
+							<option value="Shurup core i3 3342">Shurup core i3 3342</option>
+						</datalist>
+					<label class="label2"><strong>Відеокарта: </strong></label>
+					<input list="videocard" required>
+						<datalist id="videocard">
+							<option value="Shurup Graphics 4000">Shurup Graphics 4000</option>
+							<option value="GDZ Bukinist 1400">GDZ Bukinist 1400</option>
+							<option value="Shurup Graphics 2000">Shurup Graphics 2000</option>
+							<option value="GDZ Bukinist Sync">GDZ Bukinist Sync</option>
+						</datalist>
+					<label class="label2"><strong>Оперативна пам'ять: </strong></label>
+					<input list="ram" requirede>
+						<datalist id="ram">
+							<option value="Raptor 4Gb DDR3L">Raptor 4Gb DDR3L</option>
+							<option value="logicRAM 2x2Gb DDR2">logicRAM 2x2Gb DDR2</option>
+						</datalist>		
+				</fieldset>
+				<br><br>	
+        
+				
+				<label class="label1"><strong>Кількість одиниць: </strong></label>
+				<input type="number" min="1" value="1" required><br><br>
+				<label class="label1"><strong>Адреса доставки: </strong></label>
+				<input type="text" placeholder="Ваша домашня адреса" required><br><br>
+				<label class="label1"><strong>Ваш e-mail: </strong></label>
+				<input type="url" placeholder="name@ddealer.net"><br><br>
+				<label class="label1"><strong>Ваш телефон: </strong></label>
+				<input type="tel" placeholder="+380 000 0000" required><br><br>
+				
+				<label class="label1"><strong>Сьогоднішня дата: </strong></label>
+				<input type="date"><br><br>
+
+				<label class="label1"><strong>Поставка очікується: </strong></label>
+				<input type="week"><br><br>
+				
+				<input type="submit" value="Оформити замовлення">
+				<br><br><br>				
+				
+				<div>
+				<input type="checkbox">
+				<label for="">Бажаєте залишити відгук? </label><br>				
+				<textarea form="form1" lang="ua" name="tarea1" rows="3" cols="20" placeholder="Відгук"></textarea><br><br>
+				</div>
+				
+				
+				
+				
+
+				
+				
+				<details title="" style="" class=""><br><br>
+				<input type="range"><br>				
+				<progress style="" id="progress1" dir="ltr"><br><br></progress>
+				<output id="" class="" form="form1" for=""></output>
+				<isindex action="" dir="ltr" lang="ua"/><br>
+				<p>Придбавши платну підписку «Де ви є?!» зможете також зв’язатися із кур’єром, відповідальним за Ваше перевезення, дізнатися в нього про місцезнаходження доставки ще детальніше, а також розповісти як зовуть всіх його родичів.</p>
+				<p>Придбавши пакет «Де ви є?!+» Ви зможете поговорити про родичів з будь-яким кур’єром компанії</p>
+				</details>
+			</form>							
+		</div>
+
+
+
+		<footer class="footer1">
+			dDealer ♦ 2017
+		</footer>
+
+	</body>
+</html>

@@ -1,0 +1,83 @@
+			.main{
+		background-size: 100%;
+		background-color: black;
+		background-repeat: no-repeat;}
+			.Name{
+		color: #5EA4E8;
+		text-align: center;
+		font-size: 80px;
+		font-family: 'Dancing Script', cursive;
+		margin-top: 450px;}
+			dD{
+		font-family: 'Lobster', cursive;}
+			.Name1{
+		font-family: 'Dancing Script', cursive;
+		font-size: 60px;
+		color: #5EA4E8;
+		text-align: center;}
+			.hr1{
+		width: 100%;
+		height: 10px;
+		margin-top: 700px;
+		margin-left: -2px;}
+			.pargh1{
+		color: #5EA4E8;
+		font-family: 'Old Standard TT', serif;
+		font-size: 25px;
+		margin-left: 10px;
+		margin-top: -20px;}
+			.pargh2{
+		color: #5EA4E8;
+		font-family: 'Old Standard TT', serif;
+		font-size: 30px;
+		margin-left: 10px;
+		margin-top: -20px;}
+			.dD{
+		color: #3540E8;
+		font-size: 80px;}
+			.center{
+		text-align:center;
+		color: #5EA4E8;
+		font-size: 30px;}
+			.hr2{
+		height: 10px;
+		margin-bot:30px;}
+			.alan{
+		margin-top: 30px;
+		border: 10px solid #5EA4E8;}
+			.hr3{
+		height: 10px;
+		margin-top: 30px;}
+			.paragh3{
+		text-align: center;
+		color: #5EA4E8;
+		font-size: 20px;
+		margin-top: 250px;
+		margin-bottom: 20px;}
+			.paragh4{
+		text-align: right;
+		color: #5EA4E8;
+		font-size: 25px;
+		margin-top: -400px;
+		margin-right: 200px;}
+			.paragh5{
+		color: #5EA4E8;
+		font-size: 35px;
+		font-family: 'Old Standard TT', serif;}
+			.paragh6{
+		color: #5EA4E8;
+		font-family: Old Standard TT, serif;
+		font-size: 25px;}
+			.paragh7{
+		color: #190CD4;
+		font-family: Old Standard TT;
+		font-size: 20px;}
+b:first-child{
+	color: red;
+}	
+p:first-of-type{
+	text-transform: uppercase;
+}	
+h1:focus{
+	color: orange;
+}
