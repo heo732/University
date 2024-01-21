@@ -1,0 +1,129 @@
+object Form1: TForm1
+  Left = 188
+  Top = 124
+  Width = 1461
+  Height = 828
+  Caption = 'Lab4'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -14
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 120
+  TextHeight = 16
+  object Image1: TImage
+    Left = 620
+    Top = 10
+    Width = 799
+    Height = 749
+  end
+  object Label1: TLabel
+    Left = 30
+    Top = 10
+    Width = 159
+    Height = 24
+    Caption = #1050#1110#1083#1100#1082#1110#1089#1090#1100' '#1090#1086#1095#1086#1082':'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -18
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object StringGrid1: TStringGrid
+    Left = 30
+    Top = 59
+    Width = 306
+    Height = 700
+    ColCount = 4
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -18
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goThumbTracking]
+    ParentFont = False
+    TabOrder = 0
+    ColWidths = (
+      64
+      56
+      53
+      97)
+  end
+  object Edit1: TEdit
+    Left = 187
+    Top = 10
+    Width = 149
+    Height = 32
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -18
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    Text = '5'
+  end
+  object Button1: TButton
+    Left = 364
+    Top = 719
+    Width = 228
+    Height = 40
+    Caption = #1042#1080#1093#1110#1076
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -18
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 364
+    Top = 177
+    Width = 228
+    Height = 41
+    Caption = #1053#1072#1088#1080#1089#1091#1074#1072#1090#1080
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -18
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 3
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 364
+    Top = 118
+    Width = 228
+    Height = 41
+    Caption = #1056#1072#1085#1076#1086#1084#1085#1110' '#1090#1086#1095#1082#1080
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -18
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 4
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 364
+    Top = 59
+    Width = 228
+    Height = 41
+    Caption = #1055#1110#1076#1075#1086#1090#1091#1074#1072#1090#1080' '#1090#1072#1073#1083#1080#1094#1102
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -18
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 5
+    OnClick = Button4Click
+  end
+end

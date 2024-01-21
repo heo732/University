@@ -1,0 +1,237 @@
+//---------------------------------------------------------------------------
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+#define constVertex 30
+#include <math.h>
+
+typedef struct
+{
+	double x,y,z;
+}TDot;
+
+typedef struct
+{
+	int cntVert;
+	TDot arrDot[constVertex];
+	bool rebra[constVertex][constVertex];
+}TBody;
+
+TBody B;
+
+Tfrm *frm;
+//---------------------------------------------------------------------------
+__fastcall Tfrm::Tfrm(TComponent* Owner)
+        : TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void FClear()
+{
+	frm->img->Picture->Bitmap=NULL;
+}	
+//---------------------------------------------------------------------------
+void FSize(int n)
+{
+	int i,j;
+	B.cntVert=n;
+	frm->stgVertex->RowCount=n+1;
+	frm->stgRebra->RowCount=n+1;
+	frm->stgRebra->ColCount=n+1;
+	
+	frm->stgVertex->Cells[1][0]="X";
+	frm->stgVertex->Cells[2][0]="Y";
+	frm->stgVertex->Cells[3][0]="Z";
+	for(i=1;i<n+1;i++)
+	{
+		frm->stgVertex->Cells[0][i]=i;
+		frm->stgRebra->Cells[0][i]=i;
+		frm->stgRebra->Cells[i][0]=i;
+		for(j=1;j<n+1;j++)
+		{
+			frm->stgVertex->Cells[i][j]="0";
+			frm->stgRebra->Cells[i][j]="0";
+		}
+	}	
+}
+//---------------------------------------------------------------------------
+void FInput(TBody &A)
+{
+	int i,j;
+	
+	for(i=0;i<A.cntVert;i++)
+	{
+		A.arrDot[i].x=StrToFloat(frm->stgVertex->Cells[1][i+1]);
+		A.arrDot[i].y=StrToFloat(frm->stgVertex->Cells[2][i+1]);
+		A.arrDot[i].z=StrToFloat(frm->stgVertex->Cells[3][i+1]);		
+		for(j=0;j<A.cntVert;j++)
+			if(frm->stgRebra->Cells[i+1][j+1]=="1")
+				A.rebra[i][j]=true;
+			else
+				A.rebra[i][j]=false;
+	}		
+}
+//---------------------------------------------------------------------------
+void FDraw(TBody A,int xc,int yc)
+{
+	int i,j;
+	
+	frm->img->Canvas->Pen->Color=clGreen;
+	frm->img->Canvas->Pen->Width=3;
+	for(i=0;i<A.cntVert;i++)
+		for(j=0;j<A.cntVert;j++)
+			if(A.rebra[i][j]==true)
+			{
+				frm->img->Canvas->MoveTo(xc+A.arrDot[i].y,yc-A.arrDot[i].z);
+				frm->img->Canvas->LineTo(xc+A.arrDot[j].y,yc-A.arrDot[j].z);
+			}
+}
+//---------------------------------------------------------------------------
+void FRotate(TBody &A,char c)
+{
+	//asd
+}
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+double x[constVertex],y[constVertex],z[constVertex],center1,center2;
+bool rebra[constVertex][constVertex];
+int i,j;
+
+void DrawPyramid()
+{
+	frm->img->Picture->Bitmap=NULL;
+	frm->img->Canvas->Pen->Color=clBlack;
+	frm->img->Canvas->Pen->Width=5;
+	for(i=0;i<constVertex;i++)
+		for(j=0;j<constVertex;j++)
+			if(rebra[i][j]==true)
+			{
+				frm->img->Canvas->MoveTo(y[i],z[i]);
+				frm->img->Canvas->LineTo(y[j],z[j]);
+			}
+}
+//---------------------------------------------------------------------------
+void Povorot(double a[constVertex],double b[constVertex],double k)
+{
+double tmp1,tmp2;
+frm->img->Picture->Bitmap=NULL;
+for(i=0;i<constVertex;i++)
+    {
+    tmp1=((a[i]-center1)*cos(k))-((b[i]-center2)*sin(k))+center1;    
+    tmp2=((a[i]-center1)*sin(k))+((b[i]-center2)*cos(k))+center2;	        
+    a[i]=tmp1;
+    b[i]=tmp2;
+    }
+}
+//---------------------------------------------------------------------------
+void __fastcall Tfrm::FormCreate(TObject *Sender)
+{
+	FSize(10);
+	
+	
+x[0]=-50; y[0]=10; z[0]=10;
+x[1]=-50; y[1]=50; z[1]=10;
+x[2]=-50; y[2]=60; z[2]=40;
+x[3]=0; y[3]=50; z[3]=10;
+
+rebra[0][1]=true;
+rebra[0][2]=true;
+rebra[0][3]=true;
+rebra[1][2]=true;
+rebra[1][3]=true;
+rebra[2][3]=true;
+
+center1=20;
+center2=40;
+DrawPyramid();
+}
+//---------------------------------------------------------------------------
+void __fastcall Tfrm::btnOxRClick(TObject *Sender)
+{
+if(frm->edtDegree->Text.Length()==0)
+	ShowMessage("Заповніть поле значенням кута повороту!");
+else
+	{
+	Povorot(y,z,-(StrToFloat(frm->edtDegree->Text))/180*M_PI);        
+	DrawPyramid();
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall Tfrm::btnOxLClick(TObject *Sender)
+{
+if(frm->edtDegree->Text.Length()==0)
+	ShowMessage("Заповніть поле значенням кута повороту!");
+else
+	{
+	Povorot(y,z,(StrToFloat(frm->edtDegree->Text))/180*M_PI);        
+	DrawPyramid();
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall Tfrm::btnOyLClick(TObject *Sender)
+{
+if(frm->edtDegree->Text.Length()==0)
+	ShowMessage("Заповніть поле значенням кута повороту!");
+else
+	{
+	Povorot(x,z,(StrToFloat(frm->edtDegree->Text))/180*M_PI);        
+	DrawPyramid();
+	}        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tfrm::btnOyRClick(TObject *Sender)
+{
+if(frm->edtDegree->Text.Length()==0)
+	ShowMessage("Заповніть поле значенням кута повороту!");
+else
+	{
+	Povorot(x,z,-(StrToFloat(frm->edtDegree->Text))/180*M_PI);        
+	DrawPyramid();
+	}        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tfrm::btnOzRClick(TObject *Sender)
+{
+if(frm->edtDegree->Text.Length()==0)
+	ShowMessage("Заповніть поле значенням кута повороту!");
+else
+	{
+	Povorot(x,y,-(StrToFloat(frm->edtDegree->Text))/180*M_PI);        
+	DrawPyramid();
+	}        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tfrm::btnOzLClick(TObject *Sender)
+{
+if(frm->edtDegree->Text.Length()==0)
+	ShowMessage("Заповніть поле значенням кута повороту!");
+else
+	{
+	Povorot(x,y,(StrToFloat(frm->edtDegree->Text))/180*M_PI);        
+	DrawPyramid();
+	}        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tfrm::btnSizeClick(TObject *Sender)
+{
+	FSize(StrToInt(frm->edtSize->Text));
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tfrm::btnStartClick(TObject *Sender)
+{	
+	FInput(B);
+	FClear();
+	FDraw(B);
+}
+//---------------------------------------------------------------------------

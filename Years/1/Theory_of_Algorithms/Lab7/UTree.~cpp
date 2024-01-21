@@ -1,0 +1,51 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "UTree.h"
+#pragma package(smart_init)
+//---------------------------------------------------------------------------
+void AddNode(TTree *&T,double d)
+{
+  if(T==NULL)
+  {
+    T=new TTree;
+    T->left=NULL;
+    T->right=NULL;
+    T->data=d;
+  }
+  else
+    if(d<T->data)
+      AddNode(T->left,d);
+    else
+      AddNode(T->right,d);
+}
+//---------------------------------------------------------------------------
+void DeleteTree(TTree *&T)
+{
+  if(T!=NULL)
+  {
+    DeleteTree(T->left);
+    DeleteTree(T->right);
+    delete T;
+    T=NULL;
+  }
+}
+//---------------------------------------------------------------------------
+void PrintTree(TTree *T,int Rang,TStringGrid *&stg)
+{
+  if(T!=NULL)
+  {
+    PrintTree(T->left,Rang+1,stg);
+    stg->Cells[stg->ColCount][Rang]=FloatToStr(T->data);
+    stg->ColCount++;
+    PrintTree(T->right,Rang+1,stg);
+  }
+}
+//---------------------------------------------------------------------------
+void CleanStringGrid(TStringGrid *&stg)
+{
+  int i,j;
+  for(i=stg->FixedCols;i<stg->ColCount;i++)
+    for(j=stg->FixedRows;j<stg->RowCount;j++)
+      stg->Cells[i][j]="";
+}
+//---------------------------------------------------------------------------

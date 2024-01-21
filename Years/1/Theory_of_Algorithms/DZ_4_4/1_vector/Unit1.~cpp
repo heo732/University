@@ -1,0 +1,79 @@
+#include <iostream>
+#include <alloc.h>
+#include <windows.h>
+using namespace std;
+
+double *a,*b;
+int n,i,j,k=0,index;
+bool *mitka;
+
+void Input()
+{
+	cout<<"Введіть кількість елементів вхідного масиву: ";
+	cin>>n;
+	while(n<=0)
+	{
+		cout<<"Кількість елементів має бути додатнім числом. Введіть щераз: ";
+		cin>>n;
+	}
+
+	cout<<"Введіть вхідний масив чисел: ";
+	a=(double*)calloc(n,sizeof(double));
+	for(i=0;i<n;i++)
+		scanf("%lf",a+i);
+}
+
+void Do()
+{
+	mitka=(bool*)calloc(n,sizeof(bool));
+	for(i=0;i<n-1;i++)
+	{
+		mitka[i]=false;
+		for(j=i+1;j<n;j++)
+			if(a[j]!=NULL && a[j]==a[i])
+			{
+				mitka[i]=true;
+				a[j]=NULL;
+			}
+		if(mitka[i]==true)
+			k++;	
+	}
+}
+
+void Output()
+{
+	b=(double*)calloc(k,sizeof(double));
+	index=0;
+	for(i=0;i<n;i++)
+		if(mitka[i]==true)
+		{
+			b[index]=a[i];
+			index++;
+		}
+	cout<<"Вихідний масив чисел, що повторюються у вхідному масиві: ";
+	for(i=0;i<k;i++)
+		cout<<b[i]>>" ";
+	cout<<endl<<endl;
+	free(b);
+	b=NULL;
+	free(a);
+	a=NULL;
+	free(mitka);
+	mitka=NULL;
+}
+
+int main()
+{
+SetConsoleCP(1251);
+SetConsoleOutputCP(1251);
+
+cout<<"     /////  Lab 4 _ Home 1 _ Var 4  /////"<<endl<<endl<<endl;
+Input();
+Do();
+Output();
+
+system("pause");
+return 0;
+}
+//---------------------------------------------------------------------------
+ 

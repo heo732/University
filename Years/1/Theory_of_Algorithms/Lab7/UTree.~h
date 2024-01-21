@@ -1,0 +1,20 @@
+//---------------------------------------------------------------------------
+#ifndef UTreeH
+#define UTreeH
+//---------------------
+#include "Classes.hpp"
+#include <Grids.hpp>
+//---------------------------------------------------------------------------
+typedef struct OTree
+{
+  double data;
+  OTree *left;
+  OTree *right;
+}TTree;
+//---------------------------------------------------------------------------
+void AddNode(TTree,double);
+void DeleteTree(TTree);
+void PrintTree(TTree,int,TStringGrid);
+void CleanStringGrid(TStringGrid);
+//---------------------------------------------------------------------------
+#endif

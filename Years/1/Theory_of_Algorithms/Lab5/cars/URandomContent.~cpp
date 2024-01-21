@@ -1,0 +1,592 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "URandomContent.h"
+#pragma package(smart_init)
+#include <cstring.h>
+#include <vector.h>
+#include <vcl.h>
+//---------------------------------------------------------------------------
+void FRandom1(char content[])
+{
+	int i;
+	char data[100];
+
+	i=random(100);
+	switch(i)
+	{
+case 0:{strcpy(data,"NF 7468 SF");break;}
+case 1:{strcpy(data,"IR 9026 MH");break;}
+case 2:{strcpy(data,"YZ 2343 DB");break;}
+case 3:{strcpy(data,"BM 7082 UE");break;}
+case 4:{strcpy(data,"KI 4203 NV");break;}
+case 5:{strcpy(data,"LW 1873 VP");break;}
+case 6:{strcpy(data,"GM 7856 AZ");break;}
+case 7:{strcpy(data,"YC 4437 QB");break;}
+case 8:{strcpy(data,"KO 8811 BI");break;}
+case 9:{strcpy(data,"VE 6439 OE");break;}
+case 10:{strcpy(data,"YR 0154 AG");break;}
+case 11:{strcpy(data,"MQ 7490 RB");break;}
+case 12:{strcpy(data,"FG 2845 LS");break;}
+case 13:{strcpy(data,"XQ 8408 UN");break;}
+case 14:{strcpy(data,"OI 6576 JQ");break;}
+case 15:{strcpy(data,"LI 0100 DO");break;}
+case 16:{strcpy(data,"DB 5305 KL");break;}
+case 17:{strcpy(data,"CV 6817 IW");break;}
+case 18:{strcpy(data,"FJ 5680 CR");break;}
+case 19:{strcpy(data,"YY 9295 XH");break;}
+case 20:{strcpy(data,"UN 0480 TE");break;}
+case 21:{strcpy(data,"VE 2676 RV");break;}
+case 22:{strcpy(data,"WS 9897 XI");break;}
+case 23:{strcpy(data,"BK 9213 BT");break;}
+case 24:{strcpy(data,"QP 9447 TW");break;}
+case 25:{strcpy(data,"AY 2144 FF");break;}
+case 26:{strcpy(data,"SJ 7435 UM");break;}
+case 27:{strcpy(data,"PI 9050 MD");break;}
+case 28:{strcpy(data,"VX 7559 JV");break;}
+case 29:{strcpy(data,"QD 5206 JD");break;}
+case 30:{strcpy(data,"BL 0074 TO");break;}
+case 31:{strcpy(data,"HG 9882 XL");break;}
+case 32:{strcpy(data,"MW 9025 VW");break;}
+case 33:{strcpy(data,"RM 0332 FY");break;}
+case 34:{strcpy(data,"OO 7336 JG");break;}
+case 35:{strcpy(data,"LC 2372 XS");break;}
+case 36:{strcpy(data,"MB 6109 WX");break;}
+case 37:{strcpy(data,"RK 7630 RM");break;}
+case 38:{strcpy(data,"ML 1238 OW");break;}
+case 39:{strcpy(data,"NR 3267 AI");break;}
+case 40:{strcpy(data,"YB 2510 XP");break;}
+case 41:{strcpy(data,"OK 5715 EN");break;}
+case 42:{strcpy(data,"ZG 5008 MQ");break;}
+case 43:{strcpy(data,"MA 2559 CS");break;}
+case 44:{strcpy(data,"MI 3347 HG");break;}
+case 45:{strcpy(data,"OR 9558 YK");break;}
+case 46:{strcpy(data,"EV 4750 ZP");break;}
+case 47:{strcpy(data,"OT 1965 NL");break;}
+case 48:{strcpy(data,"RJ 5729 XA");break;}
+case 49:{strcpy(data,"VA 9542 LR");break;}
+case 50:{strcpy(data,"SI 9634 KE");break;}
+case 51:{strcpy(data,"VD 9337 GW");break;}
+case 52:{strcpy(data,"RN 4793 PE");break;}
+case 53:{strcpy(data,"DW 1029 OS");break;}
+case 54:{strcpy(data,"GR 6747 KF");break;}
+case 55:{strcpy(data,"XH 8506 WW");break;}
+case 56:{strcpy(data,"OO 0357 JB");break;}
+case 57:{strcpy(data,"JU 6220 ZL");break;}
+case 58:{strcpy(data,"HF 5236 GN");break;}
+case 59:{strcpy(data,"BQ 3200 HF");break;}
+case 60:{strcpy(data,"JU 1360 VZ");break;}
+case 61:{strcpy(data,"CK 4720 HU");break;}
+case 62:{strcpy(data,"PG 6629 UO");break;}
+case 63:{strcpy(data,"YN 4957 RV");break;}
+case 64:{strcpy(data,"IJ 0105 QP");break;}
+case 65:{strcpy(data,"AS 7939 GV");break;}
+case 66:{strcpy(data,"TB 7797 HX");break;}
+case 67:{strcpy(data,"HV 6833 JS");break;}
+case 68:{strcpy(data,"OU 8586 WQ");break;}
+case 69:{strcpy(data,"MD 9261 WT");break;}
+case 70:{strcpy(data,"ZF 3029 XE");break;}
+case 71:{strcpy(data,"FN 2214 BT");break;}
+case 72:{strcpy(data,"LD 3806 UR");break;}
+case 73:{strcpy(data,"AR 9469 HE");break;}
+case 74:{strcpy(data,"BO 3795 ES");break;}
+case 75:{strcpy(data,"OX 4112 FE");break;}
+case 76:{strcpy(data,"DP 5207 MA");break;}
+case 77:{strcpy(data,"ZX 1374 GJ");break;}
+case 78:{strcpy(data,"BM 5785 CP");break;}
+case 79:{strcpy(data,"RZ 6605 XB");break;}
+case 80:{strcpy(data,"CL 1678 OG");break;}
+case 81:{strcpy(data,"IL 3880 ON");break;}
+case 82:{strcpy(data,"WF 5257 CL");break;}
+case 83:{strcpy(data,"PX 4594 HM");break;}
+case 84:{strcpy(data,"TV 6418 EC");break;}
+case 85:{strcpy(data,"YQ 4024 AY");break;}
+case 86:{strcpy(data,"OV 5972 DQ");break;}
+case 87:{strcpy(data,"VL 7101 XV");break;}
+case 88:{strcpy(data,"EB 4527 MJ");break;}
+case 89:{strcpy(data,"UE 4999 YX");break;}
+case 90:{strcpy(data,"NE 3130 VS");break;}
+case 91:{strcpy(data,"GL 4315 NB");break;}
+case 92:{strcpy(data,"KJ 2058 MB");break;}
+case 93:{strcpy(data,"UC 8958 EL");break;}
+case 94:{strcpy(data,"QP 1493 NY");break;}
+case 95:{strcpy(data,"JV 4245 SM");break;}
+case 96:{strcpy(data,"TD 7811 WG");break;}
+case 97:{strcpy(data,"IT 8350 FI");break;}
+case 98:{strcpy(data,"LS 0814 TM");break;}
+case 99:{strcpy(data,"XP 1346 XN");break;}
+	}
+strcpy(content,data);
+}
+
+void FRandom2(char content[])
+{
+	int i;
+	char data[100];
+
+	i=random(100);
+	switch(i)
+	{
+case 0:{strcpy(data,"AC");break;}
+case 1:{strcpy(data,"Acura");break;}
+case 2:{strcpy(data,"Alfa Romeo");break;}
+case 3:{strcpy(data,"Alpina");break;}
+case 4:{strcpy(data,"Alpine");break;}
+case 5:{strcpy(data,"Aro");break;}
+case 6:{strcpy(data,"Asia");break;}
+case 7:{strcpy(data,"Aston Martin");break;}
+case 8:{strcpy(data,"Audi");break;}
+case 9:{strcpy(data,"Austin");break;}
+case 10:{strcpy(data,"BAW");break;}
+case 11:{strcpy(data,"Beijing");break;}
+case 12:{strcpy(data,"Bentley");break;}
+case 13:{strcpy(data,"BMW");break;}
+case 14:{strcpy(data,"Brilliance");break;}
+case 15:{strcpy(data,"Bristol");break;}
+case 16:{strcpy(data,"Bugatti");break;}
+case 17:{strcpy(data,"Buick");break;}
+case 18:{strcpy(data,"BYD");break;}
+case 19:{strcpy(data,"Áîãäàí");break;}
+case 20:{strcpy(data,"Vector");break;}
+case 21:{strcpy(data,"Venturi");break;}
+case 22:{strcpy(data,"Volkswagen");break;}
+case 23:{strcpy(data,"Volvo");break;}
+case 24:{strcpy(data,"Vortex");break;}
+case 25:{strcpy(data,"Wartburg");break;}
+case 26:{strcpy(data,"Westfield");break;}
+case 27:{strcpy(data,"Wiesmann");break;}
+case 28:{strcpy(data,"Wuling");break;}
+case 29:{strcpy(data,"ÂÀÇ (Lada)");break;}
+case 30:{strcpy(data,"Geely");break;}
+case 31:{strcpy(data,"Geo");break;}
+case 32:{strcpy(data,"GMC");break;}
+case 33:{strcpy(data,"Great Wall");break;}
+case 34:{strcpy(data,"ÃÀÇ");break;}
+case 35:{strcpy(data,"Dacia");break;}
+case 36:{strcpy(data,"Dadi");break;}
+case 37:{strcpy(data,"Daewoo");break;}
+case 38:{strcpy(data,"Daihatsu");break;}
+case 39:{strcpy(data,"Daimler");break;}
+case 40:{strcpy(data,"Dallas");break;}
+case 41:{strcpy(data,"Derways");break;}
+case 42:{strcpy(data,"De Tomaso");break;}
+case 43:{strcpy(data,"Dodge");break;}
+case 44:{strcpy(data,"Dong Feng");break;}
+case 45:{strcpy(data,"Doninvest");break;}
+case 46:{strcpy(data,"Jeep");break;}
+case 47:{strcpy(data,"Jiangling");break;}
+case 48:{strcpy(data,"Jiangnan");break;}
+case 49:{strcpy(data,"Eagle");break;}
+case 50:{strcpy(data,"Zastava");break;}
+case 51:{strcpy(data,"ZX");break;}
+case 52:{strcpy(data,"ÇÀÇ");break;}
+case 53:{strcpy(data,"ÇÈË");break;}
+case 54:{strcpy(data,"Infiniti");break;}
+case 55:{strcpy(data,"Innocenti");break;}
+case 56:{strcpy(data,"Invicta");break;}
+case 57:{strcpy(data,"Iran Khodro");break;}
+case 58:{strcpy(data,"Isdera");break;}
+case 59:{strcpy(data,"Isuzu");break;}
+case 60:{strcpy(data,"IVECO");break;}
+case 61:{strcpy(data,"Xin Kai");break;}
+case 62:{strcpy(data,"ÈÆ");break;}
+case 63:{strcpy(data,"Cadillac");break;}
+case 64:{strcpy(data,"Callaway");break;}
+case 65:{strcpy(data,"Carbodies");break;}
+case 66:{strcpy(data,"Caterham");break;}
+case 67:{strcpy(data,"Citroen");break;}
+case 68:{strcpy(data,"Cizeta");break;}
+case 69:{strcpy(data,"Coggiola");break;}
+case 70:{strcpy(data,"Kia");break;}
+case 71:{strcpy(data,"Koenigsegg");break;}
+case 72:{strcpy(data,"Qvale");break;}
+case 73:{strcpy(data,"ÊÀÌÀÇ");break;}
+case 74:{strcpy(data,"Lamborghini");break;}
+case 75:{strcpy(data,"Lancia");break;}
+case 76:{strcpy(data,"Land Rover");break;}
+case 77:{strcpy(data,"Landwind");break;}
+case 78:{strcpy(data,"Lexus");break;}
+case 79:{strcpy(data,"Lifan");break;}
+case 80:{strcpy(data,"Lincoln");break;}
+case 81:{strcpy(data,"Lotus");break;}
+case 82:{strcpy(data,"LTI");break;}
+case 83:{strcpy(data,"Luxgen");break;}
+case 84:{strcpy(data,"ËóÀÇ");break;}
+case 85:{strcpy(data,"Mahindra");break;}
+case 86:{strcpy(data,"Marcos");break;}
+case 87:{strcpy(data,"Marlin");break;}
+case 88:{strcpy(data,"Marussia");break;}
+case 89:{strcpy(data,"Maruti");break;}
+case 90:{strcpy(data,"Maserati");break;}
+case 91:{strcpy(data,"Maybach");break;}
+case 92:{strcpy(data,"Mazda");break;}
+case 93:{strcpy(data,"McLaren");break;}
+case 94:{strcpy(data,"Mega");break;}
+case 95:{strcpy(data,"Mercedes-Benz");break;}
+case 96:{strcpy(data,"Mercury");break;}
+case 97:{strcpy(data,"Metrocab");break;}
+case 98:{strcpy(data,"MG");break;}
+case 99:{strcpy(data,"Minelli");break;}
+	}
+strcpy(content,data);
+}
+
+void FRandom3(char content[])
+{
+	int i;
+	char data[100];
+
+	i=random(100);
+	switch(i)
+	{
+case 0:{strcpy(data,"ÌÅËÜÍÈÊ");break;}
+case 1:{strcpy(data,"ØÅÂ×ÅÍÊÎ");break;}
+case 2:{strcpy(data,"ÁÎÉÊÎ");break;}
+case 3:{strcpy(data,"ÊÎÂÀËÅÍÊÎ");break;}
+case 4:{strcpy(data,"ÁÎÍÄÀĞÅÍÊÎ");break;}
+case 5:{strcpy(data,"ÒÊÀ×ÅÍÊÎ");break;}
+case 6:{strcpy(data,"ÊÎÂÀËÜ×ÓÊ");break;}
+case 7:{strcpy(data,"ÊĞÀÂ×ÅÍÊÎ");break;}
+case 8:{strcpy(data,"ÎË²ÉÍÈÊ");break;}
+case 9:{strcpy(data,"ØÅÂ×ÓÊ");break;}
+case 10:{strcpy(data,"ÊÎÂÀËÜ");break;}
+case 11:{strcpy(data,"ÏÎË²ÙÓÊ");break;}
+case 12:{strcpy(data,"ÁÎÍÄÀĞ");break;}
+case 13:{strcpy(data,"ÒÊÀ×ÓÊ");break;}
+case 14:{strcpy(data,"ÌÎĞÎÇ");break;}
+case 15:{strcpy(data,"ÌÀĞ×ÅÍÊÎ");break;}
+case 16:{strcpy(data,"ËÈÑÅÍÊÎ");break;}
+case 17:{strcpy(data,"ĞÓÄÅÍÊÎ");break;}
+case 18:{strcpy(data,"ÑÀÂ×ÅÍÊÎ");break;}
+case 19:{strcpy(data,"ÏÅÒĞÅÍÊÎ");break;}
+case 20:{strcpy(data,"ÊĞÀÂ×ÓÊ");break;}
+case 21:{strcpy(data,"ÊËÈÌÅÍÊÎ");break;}
+case 22:{strcpy(data,"ÏÀÂËÅÍÊÎ");break;}
+case 23:{strcpy(data,"ÑÀÂ×ÓÊ");break;}
+case 24:{strcpy(data,"ÊÓÇÜÌÅÍÊÎ");break;}
+case 25:{strcpy(data,"ØÂÅÖÜ");break;}
+case 26:{strcpy(data,"ÃÀÂĞÈËŞÊ");break;}
+case 27:{strcpy(data,"²ÂÀÍÎÂÀ");break;}
+case 28:{strcpy(data,"ÕÀĞ×ÅÍÊÎ");break;}
+case 29:{strcpy(data,"ÏÎÍÎÌÀĞÅÍÊÎ");break;}
+case 30:{strcpy(data,"ÌÅËÜÍÈ×ÓÊ");break;}
+case 31:{strcpy(data,"ÂÀÑÈËÅÍÊÎ");break;}
+case 32:{strcpy(data,"ÌÀÇÓĞ");break;}
+case 33:{strcpy(data,"ÕÎÌÅÍÊÎ");break;}
+case 34:{strcpy(data,"ËÅÂ×ÅÍÊÎ");break;}
+case 35:{strcpy(data,"ÊÀĞÏÅÍÊÎ");break;}
+case 36:{strcpy(data,"ÊÓØÍ²Ğ");break;}
+case 37:{strcpy(data,"ÑÈÄÎĞÅÍÊÎ");break;}
+case 38:{strcpy(data,"ĞÎÌÀÍŞÊ");break;}
+case 39:{strcpy(data,"ÌÀĞÒÈÍŞÊ");break;}
+case 40:{strcpy(data,"ÊÎËÎÌ²ªÖÜ");break;}
+case 41:{strcpy(data,"ÏÀÂËŞÊ");break;}
+case 42:{strcpy(data,"ÒÊÀ×");break;}
+case 43:{strcpy(data,"ËÈÒÂÈÍÅÍÊÎ");break;}
+case 44:{strcpy(data,"ÏÀÍ×ÅÍÊÎ");break;}
+case 45:{strcpy(data,"ÊÎÑÒÅÍÊÎ");break;}
+case 46:{strcpy(data,"ÊÓËÈÊ");break;}
+case 47:{strcpy(data,"ÊĞÀÂÅÖÜ");break;}
+case 48:{strcpy(data,"ŞĞ×ÅÍÊÎ");break;}
+case 49:{strcpy(data,"Á²ËÎÓÑ");break;}
+case 50:{strcpy(data,"Äß×ÅÍÊÎ");break;}
+case 51:{strcpy(data,"ÑÅÌÅÍŞÊ");break;}
+case 52:{strcpy(data,"ÊÎÑÒŞÊ");break;}
+case 53:{strcpy(data,"²ÂÀÍÎÂ");break;}
+case 54:{strcpy(data,"ÃÓÌÅÍŞÊ");break;}
+case 55:{strcpy(data,"ÂÎÂÊ");break;}
+case 56:{strcpy(data,"ÃÎÍ×ÀĞÅÍÊÎ");break;}
+case 57:{strcpy(data,"ßÊÎÂÅÍÊÎ");break;}
+case 58:{strcpy(data,"ĞÎÌÀÍÅÍÊÎ");break;}
+case 59:{strcpy(data,"ÏĞÈÕÎÄÜÊÎ");break;}
+case 60:{strcpy(data,"ÊÎÇÀÊ");break;}
+case 61:{strcpy(data,"ÊÎÂÒÓÍ");break;}
+case 62:{strcpy(data,"ÍÀÇÀĞÅÍÊÎ");break;}
+case 63:{strcpy(data,"ÏÈËÈÏÅÍÊÎ");break;}
+case 64:{strcpy(data,"ÃÎÍ×ÀĞ");break;}
+case 65:{strcpy(data,"²ÙÅÍÊÎ");break;}
+case 66:{strcpy(data,"ÔÅÄÎĞÅÍÊÎ");break;}
+case 67:{strcpy(data,"ÃÎÍ×ÀĞÓÊ");break;}
+case 68:{strcpy(data,"ÍÅÑÒÅĞÅÍÊÎ");break;}
+case 69:{strcpy(data,"ÊÎË²ÑÍÈÊ");break;}
+case 70:{strcpy(data,"ÄÅÌ×ÅÍÊÎ");break;}
+case 71:{strcpy(data,"ÒÅĞÅÙÅÍÊÎ");break;}
+case 72:{strcpy(data,"ÒÈÙÅÍÊÎ");break;}
+case 73:{strcpy(data,"ÁÀÁÅÍÊÎ");break;}
+case 74:{strcpy(data,"ÏÎÏÎÂÈ×");break;}
+case 75:{strcpy(data,"ÒÀĞÀÑÅÍÊÎ");break;}
+case 76:{strcpy(data,"ÌÀÊÀĞÅÍÊÎ");break;}
+case 77:{strcpy(data,"ÌÀĞ×ÓÊ");break;}
+case 78:{strcpy(data,"ÌÎÑÊÀËÅÍÊÎ");break;}
+case 79:{strcpy(data,"Ç²Í×ÅÍÊÎ");break;}
+case 80:{strcpy(data,"ßÖÅÍÊÎ");break;}
+case 81:{strcpy(data,"ÆÓÊ");break;}
+case 82:{strcpy(data,"ËÈÒÂÈÍ");break;}
+case 83:{strcpy(data,"ÃÅĞÀÑÈÌÅÍÊÎ");break;}
+case 84:{strcpy(data,"ÊÈĞÈ×ÅÍÊÎ");break;}
+case 85:{strcpy(data,"ÊÎËÅÑÍÈÊ");break;}
+case 86:{strcpy(data,"Ì²ÙÅÍÊÎ");break;}
+case 87:{strcpy(data,"ÒÈÌÎØÅÍÊÎ");break;}
+case 88:{strcpy(data,"ÏÎÏÎÂÀ");break;}
+case 89:{strcpy(data,"ÔÎÏ");break;}
+case 90:{strcpy(data,"ÏÀËÀÌÀĞ×ÓÊ");break;}
+case 91:{strcpy(data,"ÂËÀÑÅÍÊÎ");break;}
+case 92:{strcpy(data,"ØÀÏÎÂÀË");break;}
+case 93:{strcpy(data,"ÁÎÍÄÀĞ×ÓÊ");break;}
+case 94:{strcpy(data,"ËÓÖÅÍÊÎ");break;}
+case 95:{strcpy(data,"ÊÎÍÄĞÀÒŞÊ");break;}
+case 96:{strcpy(data,"×ÎĞÍÀ");break;}
+case 97:{strcpy(data,"ÙÅĞÁÈÍÀ");break;}
+case 98:{strcpy(data,"ÀÍÒÎÍŞÊ");break;}
+case 99:{strcpy(data,"ÑÎĞÎÊÀ");break;}
+	}
+strcpy(content,data);
+}
+
+void FRandom4(char content[])
+{
+	int i;
+	char data[100];
+
+	i=random(100);
+	switch(i)
+	{
+case 0:{strcpy(data,"ÌÈÊÎËÀ");break;}
+case 1:{strcpy(data,"ÂÎËÎÄÈÌÈĞ");break;}
+case 2:{strcpy(data,"ÎËÅÊÑÀÍÄĞ");break;}
+case 3:{strcpy(data,"²ÂÀÍ");break;}
+case 4:{strcpy(data,"ÂÀÑÈËÜ");break;}
+case 5:{strcpy(data,"ÑÅĞÃ²É");break;}
+case 6:{strcpy(data,"Â²ÊÒÎĞ");break;}
+case 7:{strcpy(data,"ÀÍÀÒÎË²É");break;}
+case 8:{strcpy(data,"ÌÈÕÀÉËÎ");break;}
+case 9:{strcpy(data,"ÏÅÒĞÎ");break;}
+case 10:{strcpy(data,"ŞĞ²É");break;}
+case 11:{strcpy(data,"ÀÍÄĞ²É");break;}
+case 12:{strcpy(data,"ÎËÅÊÑ²É");break;}
+case 13:{strcpy(data,"ÃĞÈÃÎĞ²É");break;}
+case 14:{strcpy(data,"Â²ÒÀË²É");break;}
+case 15:{strcpy(data,"²ÃÎĞ");break;}
+case 16:{strcpy(data,"ÄÌÈÒĞÎ");break;}
+case 17:{strcpy(data,"ÎËÅÃ");break;}
+case 18:{strcpy(data,"ÂÀËÅĞ²É");break;}
+case 19:{strcpy(data,"ËÅÎÍ²Ä");break;}
+case 20:{strcpy(data,"ÏÀÂËÎ");break;}
+case 21:{strcpy(data,"ÑÒÅÏÀÍ");break;}
+case 22:{strcpy(data,"ĞÎÌÀÍ");break;}
+case 23:{strcpy(data,"ÁÎĞÈÑ");break;}
+case 24:{strcpy(data,"ÔÅÄ²Ğ");break;}
+case 25:{strcpy(data,"ÂÀËÅÍÒÈÍ");break;}
+case 26:{strcpy(data,"ªÂÃÅÍ");break;}
+case 27:{strcpy(data,"ßĞÎÑËÀÂ");break;}
+case 28:{strcpy(data,"Âß×ÅÑËÀÂ");break;}
+case 29:{strcpy(data,"ÁÎÃÄÀÍ");break;}
+case 30:{strcpy(data,"ÑÒÀÍ²ÑËÀÂ");break;}
+case 31:{strcpy(data,"ÃÅÍÍÀÄ²É");break;}
+case 32:{strcpy(data,"ĞÓÑËÀÍ");break;}
+case 33:{strcpy(data,"ÃÅÎĞÃ²É");break;}
+case 34:{strcpy(data,"ÊÎÑÒßÍÒÈÍ");break;}
+case 35:{strcpy(data,"ªÂÃÅÍ²É");break;}
+case 36:{strcpy(data,"ÂÀÄÈÌ");break;}
+case 37:{strcpy(data,"ÌÀÊÑÈÌ");break;}
+case 38:{strcpy(data,"ÀÍÒÎÍ");break;}
+case 39:{strcpy(data,"²ËËß");break;}
+case 40:{strcpy(data,"ÂËÀÄÈÑËÀÂ");break;}
+case 41:{strcpy(data,"ßÊ²Â");break;}
+case 42:{strcpy(data,"ÒÀĞÀÑ");break;}
+case 43:{strcpy(data,"ÉÎÑÈÏ");break;}
+case 44:{strcpy(data,"ÑÅÌÅÍ");break;}
+case 45:{strcpy(data,"ÅÄÓÀĞÄ");break;}
+case 46:{strcpy(data,"ÌÈĞÎÑËÀÂ");break;}
+case 47:{strcpy(data,"ÄÅÍÈÑ");break;}
+case 48:{strcpy(data,"ÀĞÒÅÌ");break;}
+case 49:{strcpy(data,"ĞÎÑÒÈÑËÀÂ");break;}
+case 50:{strcpy(data,"ÌÀĞ²ß");break;}
+case 51:{strcpy(data,"ÃÀÍÍÀ");break;}
+case 52:{strcpy(data,"ÂÀËÅÍÒÈÍÀ");break;}
+case 53:{strcpy(data,"ÎËÜÃÀ");break;}
+case 54:{strcpy(data,"ÃÀËÈÍÀ");break;}
+case 55:{strcpy(data,"ÒÅÒßÍÀ");break;}
+case 56:{strcpy(data,"ÍÀÄ²ß");break;}
+case 57:{strcpy(data,"ËŞÄÌÈËÀ");break;}
+case 58:{strcpy(data,"ÎËÅÍÀ");break;}
+case 59:{strcpy(data,"ÍÀÒÀË²ß");break;}
+case 60:{strcpy(data,"Í²ÍÀ");break;}
+case 61:{strcpy(data,"ËŞÁÎÂ");break;}
+case 62:{strcpy(data,"ÊÀÒÅĞÈÍÀ");break;}
+case 63:{strcpy(data,"ÑÂ²ÒËÀÍÀ");break;}
+case 64:{strcpy(data,"Ë²Ä²ß");break;}
+case 65:{strcpy(data,"Â²ĞÀ");break;}
+case 66:{strcpy(data,"²ĞÈÍÀ");break;}
+case 67:{strcpy(data,"ÎÊÑÀÍÀ");break;}
+case 68:{strcpy(data,"ÎËÅÊÑÀÍÄĞÀ");break;}
+case 69:{strcpy(data,"ĞÀ¯ÑÀ");break;}
+case 70:{strcpy(data,"ÒÀÌÀĞÀ");break;}
+case 71:{strcpy(data,"ËÀĞÈÑÀ");break;}
+case 72:{strcpy(data,"ÀÍÒÎÍ²ÍÀ");break;}
+case 73:{strcpy(data,"ªÂÃÅÍ²ß");break;}
+case 74:{strcpy(data,"ÀÍÀÑÒÀÑ²ß");break;}
+case 75:{strcpy(data,"ÀËËÀ");break;}
+case 76:{strcpy(data,"ªÂÄÎÊ²ß");break;}
+case 77:{strcpy(data,"Ç²ÍÀ¯ÄÀ");break;}
+case 78:{strcpy(data,"ŞË²ß");break;}
+case 79:{strcpy(data,"ÍÀÒÀËß");break;}
+case 80:{strcpy(data,"ÑÎÔ²ß");break;}
+case 81:{strcpy(data,"Â²ÊÒÎĞ²ß");break;}
+case 82:{strcpy(data,"ÌÀĞÈÍÀ");break;}
+case 83:{strcpy(data,"²ÍÍÀ");break;}
+case 84:{strcpy(data,"ÇÎß");break;}
+case 85:{strcpy(data,"ÂÀĞÂÀĞÀ");break;}
+case 86:{strcpy(data,"ÏÀĞÀÑÊÎÂ²ß");break;}
+case 87:{strcpy(data,"ÊËÀÂÄ²ß");break;}
+case 88:{strcpy(data,"Ë²Ë²ß");break;}
+case 89:{strcpy(data,"ÓËßÍÀ");break;}
+case 90:{strcpy(data,"ÑÒÅÔÀÍ²ß");break;}
+case 91:{strcpy(data,"ßĞÎÑËÀÂÀ");break;}
+case 92:{strcpy(data,"ËÅÑß");break;}
+case 93:{strcpy(data,"ÊÑÅÍ²ß");break;}
+case 94:{strcpy(data,"ÂÀÑÈËÈÍÀ");break;}
+case 95:{strcpy(data,"ªÔĞÎÑÈÍ²ß");break;}
+case 96:{strcpy(data,"ÄÀĞ²ß");break;}
+case 97:{strcpy(data,"ÌÎÒĞÎÍÀ");break;}
+case 98:{strcpy(data,"ÏÎË²ÍÀ");break;}
+case 99:{strcpy(data,"ÍÅËß");break;}
+	}
+strcpy(content,data);
+}
+
+void FRandom5(char content[])
+{
+	int i;
+	char data[100];
+
+	i=random(100);
+	switch(i)
+	{
+case 0:{strcpy(data,"Ïàâëåíêà");break;}
+case 1:{strcpy(data,"Ïàâëåíêà");break;}
+case 2:{strcpy(data,"Ïàâë³âñüêà");break;}
+case 3:{strcpy(data,"Ïàâëîãğàäñüêà");break;}
+case 4:{strcpy(data,"Ïàëëàä³íà Àêàäåì³êà");break;}
+case 5:{strcpy(data,"Ïàíàñà Ìèğíîãî");break;}
+case 6:{strcpy(data,"Ïàíàñà Ìèğíîãî");break;}
+case 7:{strcpy(data,"Ïàíåëüíà");break;}
+case 8:{strcpy(data,"Ïàíîğàìíà");break;}
+case 9:{strcpy(data,"Ïàíòåëüê³íà Àíàòîë³ÿ");break;}
+case 10:{strcpy(data,"Ïàíô³ëîâö³â");break;}
+case 11:{strcpy(data,"Ïàí÷à Ïåòğà");break;}
+case 12:{strcpy(data,"Ïàíüê³âñüêà");break;}
+case 13:{strcpy(data,"Ïàğàäæàíîâà Ñåğã³ÿ");break;}
+case 14:{strcpy(data,"Ïàğàäæàíîâà Ñåğã³ÿ");break;}
+case 15:{strcpy(data,"Ïàğêîâà");break;}
+case 16:{strcpy(data,"Ïàğêîâà");break;}
+case 17:{strcpy(data,"Ïàğêîâèé");break;}
+case 18:{strcpy(data,"Ïàğíèêîâà");break;}
+case 19:{strcpy(data,"Ïàğîâîçíà");break;}
+case 20:{strcpy(data,"Ïàğîâîçíèé");break;}
+case 21:{strcpy(data,"Ïàñ³÷íà");break;}
+case 22:{strcpy(data,"Ïàñõàë³íà Şğ³ÿ");break;}
+case 23:{strcpy(data,"Ïàòîíà Àêàäåì³êà");break;}
+case 24:{strcpy(data,"Ïàòîğæèíñüêîãî");break;}
+case 25:{strcpy(data,"Ïàòğ³îò³â");break;}
+case 26:{strcpy(data,"Ïàóñòîâñüêîãî");break;}
+case 27:{strcpy(data,"Ïàøê³âñüêà");break;}
+case 28:{strcpy(data,"Ïåğâîìàéñüêîãî Ëåîí³äà");break;}
+case 29:{strcpy(data,"Ïåğåäîâà");break;}
+case 30:{strcpy(data,"Ïåğåìîãè");break;}
+case 31:{strcpy(data,"Ïåğåìîãè");break;}
+case 32:{strcpy(data,"Ïåğåìîãè");break;}
+case 33:{strcpy(data,"Ïåğåñ³÷åíñüêèé");break;}
+case 34:{strcpy(data,"Ïåğåÿñëàâñüêà");break;}
+case 35:{strcpy(data,"Ïåğåÿñëàâñüêà");break;}
+case 36:{strcpy(data,"Ïåğîâà");break;}
+case 37:{strcpy(data,"Ïåğøà");break;}
+case 38:{strcpy(data,"Ïåğøîãî Òğàâíÿ");break;}
+case 39:{strcpy(data,"Ïåñòåëÿ Ïàâëà");break;}
+case 40:{strcpy(data,"Ïåòëşğè Ñèìîíà");break;}
+case 41:{strcpy(data,"Ïåòğèöüêîãî Àíàòîë³ÿ");break;}
+case 42:{strcpy(data,"Ïåòğ³âà Âñåâîëîäà");break;}
+case 43:{strcpy(data,"Ïåòğ³âñüêà");break;}
+case 44:{strcpy(data,"Ïåòğ³âñüêà");break;}
+case 45:{strcpy(data,"Ïåòğîâñüêîãî");break;}
+case 46:{strcpy(data,"Ïåòğîïàâë³âñüêà");break;}
+case 47:{strcpy(data,"Ïåòğîïàâë³âñüêà");break;}
+case 48:{strcpy(data,"Ïåòğîïàâë³âñüêèé");break;}
+case 49:{strcpy(data,"Ïåòğóñåíêî Îêñàíè");break;}
+case 50:{strcpy(data,"Ïå÷åí³çüêà");break;}
+case 51:{strcpy(data,"Ïå÷åğñüêà");break;}
+case 52:{strcpy(data,"Ïå÷åğñüêèé");break;}
+case 53:{strcpy(data,"Ïèëèï³âñüêèé");break;}
+case 54:{strcpy(data,"Ïèìîíåíêà Ìèêîëè");break;}
+case 55:{strcpy(data,"Ïèğí³âñüêà");break;}
+case 56:{strcpy(data,"Ïèğîã³âñüêèé øëÿõ");break;}
+case 57:{strcpy(data,"Ïèğîãîâà");break;}
+case 58:{strcpy(data,"Ïèğîãîâñüêîãî Îëåêñàíäğà");break;}
+case 59:{strcpy(data,"Ïèğÿòèíñüêà");break;}
+case 60:{strcpy(data,"Ïèğÿòèíñüêèé");break;}
+case 61:{strcpy(data,"Ïèñàğæåâñüêîãî Àêàäåì³êà");break;}
+case 62:{strcpy(data,"Ï³âäåííà");break;}
+case 63:{strcpy(data,"Ï³âí³÷íà");break;}
+case 64:{strcpy(data,"Ï³âí³÷íà");break;}
+case 65:{strcpy(data,"Ï³âí³÷íèé");break;}
+case 66:{strcpy(data,"Ï³âí³÷íî-Îçåğíà");break;}
+case 67:{strcpy(data,"Ï³âí³÷íî-Îçåğíèé 1-é");break;}
+case 68:{strcpy(data,"Ï³âí³÷íî-Îçåğíèé 10-é");break;}
+case 69:{strcpy(data,"Ï³âí³÷íî-Îçåğíèé 2-é");break;}
+case 70:{strcpy(data,"Ï³âí³÷íî-Îçåğíèé 3-é");break;}
+case 71:{strcpy(data,"Ï³âí³÷íî-Îçåğíèé 4-é");break;}
+case 72:{strcpy(data,"Ï³âí³÷íî-Îçåğíèé 5-é");break;}
+case 73:{strcpy(data,"Ï³âí³÷íî-Îçåğíèé 6-é");break;}
+case 74:{strcpy(data,"Ï³âí³÷íî-Îçåğíèé 7-é");break;}
+case 75:{strcpy(data,"Ï³âí³÷íî-Îçåğíèé 8-é");break;}
+case 76:{strcpy(data,"Ï³âí³÷íî-Îçåğíèé 9-é");break;}
+case 77:{strcpy(data,"Ï³âí³÷íî-Ñèğåöüêà");break;}
+case 78:{strcpy(data,"Ï³âí³÷íî-Ñòåïîâà");break;}
+case 79:{strcpy(data,"Ï³äá³ğíà");break;}
+case 80:{strcpy(data,"Ï³äá³ğíèé");break;}
+case 81:{strcpy(data,"Ï³äâèñîöüêîãî Ïğîôåñîğà");break;}
+case 82:{strcpy(data,"Ï³äã³ğíà");break;}
+case 83:{strcpy(data,"Ï³ääóáíîãî ²âàíà");break;}
+case 84:{strcpy(data,"Ï³äëèïêà");break;}
+case 85:{strcpy(data,"Ï³äë³ñíà");break;}
+case 86:{strcpy(data,"Ï³ëîò");break;}
+case 87:{strcpy(data,"Ï³òåğñüêà");break;}
+case 88:{strcpy(data,"Ï³õîòíà");break;}
+case 89:{strcpy(data,"Ï³õîòíèé");break;}
+case 90:{strcpy(data,"Ï³õòîâà");break;}
+case 91:{strcpy(data,"Ï³øîõ³äíèé");break;}
+case 92:{strcpy(data,"Ïëàíåğíà");break;}
+case 93:{strcpy(data,"Ïëàíåòàğíà");break;}
+case 94:{strcpy(data,"Ï³äã³ğíà");break;}
+case 95:{strcpy(data,"Ï³ääóáíîãî ²âàíà");break;}
+case 96:{strcpy(data,"Ï³äëèïêà");break;}
+case 97:{strcpy(data,"Ï³äë³ñíà");break;}
+case 98:{strcpy(data,"Ï³ëîò");break;}
+case 99:{strcpy(data,"Ï³òåğñüêà");break;}
+	}
+strcpy(content,data);
+}
+
+void FRandom6(char content[])
+{
+	int i;
+        char data[100];
+	i=random(100);
+        strcpy(data,i);
+strcpy(content,data);
+}
+
+void FRandom7(char content[])
+{
+	int i;
+
+	i=random(40);	
+strcpy(content,IntToStr(i));
+}
+
+void FRandom8(char content[])
+{
+	int i;
+
+	i=random(20);	
+strcpy(content,IntToStr(i));
+}
