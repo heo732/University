@@ -1,0 +1,537 @@
+﻿<Window x:Class="MainTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MainTool"
+        xmlns:Enums="clr-namespace:MainTool.Enums"
+        xmlns:WPF="clr-namespace:MainTool.WPF"
+        xmlns:Views="clr-namespace:MainTool.Views"
+        xmlns:Converters="clr-namespace:MainTool.WPF.Converters"
+        xmlns:GraphX="http://schemas.panthernet.ru/graphx/"
+        Title="Мережі та Потоки"
+        Name="window"
+        Width="1000" Height="700"
+        MinWidth="950" MinHeight="650"
+        ResizeMode="CanResizeWithGrip"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowState="{Binding WindowState, Mode=TwoWay}"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Icon>
+        <BitmapImage DecodePixelWidth="128" DecodePixelHeight="128" UriSource="pack://application:,,,/MainTool;component/Images/mainToolWindowIcon.png"/>
+    </Window.Icon>
+
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+1" Command="{Binding LoadPresetCommand}" CommandParameter="1"/>
+        <KeyBinding Gesture="Ctrl+O" Command="{Binding LoadPresetCommand}" CommandParameter="1"/>
+        <KeyBinding Gesture="Ctrl+2" Command="{Binding LoadPresetCommand}" CommandParameter="2"/>
+        <KeyBinding Gesture="Ctrl+A" Command="{Binding LoadPresetCommand}" CommandParameter="2"/>
+        <KeyBinding Gesture="Ctrl+3" Command="{Binding LoadPresetCommand}" CommandParameter="3"/>
+        <KeyBinding Gesture="Ctrl+Y" Command="{Binding LoadPresetCommand}" CommandParameter="3"/>
+        <KeyBinding Gesture="Ctrl+4" Command="{Binding LoadPresetCommand}" CommandParameter="4"/>
+        <KeyBinding Gesture="Ctrl+M" Command="{Binding LoadPresetCommand}" CommandParameter="4"/>
+        <KeyBinding Gesture="Ctrl+5" Command="{Binding LoadPresetCommand}" CommandParameter="5"/>
+        <KeyBinding Gesture="Ctrl+S" Command="{Binding LoadPresetCommand}" CommandParameter="5"/>
+        <KeyBinding Gesture="Alt+1" Command="{Binding LoadPresetCommand}" CommandParameter="6"/>
+        <KeyBinding Gesture="Alt+O" Command="{Binding LoadPresetCommand}" CommandParameter="6"/>
+        <KeyBinding Gesture="Alt+2" Command="{Binding LoadPresetCommand}" CommandParameter="7"/>
+        <KeyBinding Gesture="Alt+A" Command="{Binding LoadPresetCommand}" CommandParameter="7"/>
+        <KeyBinding Gesture="Alt+3" Command="{Binding LoadPresetCommand}" CommandParameter="8"/>
+        <KeyBinding Gesture="Alt+Y" Command="{Binding LoadPresetCommand}" CommandParameter="8"/>
+        <KeyBinding Gesture="Alt+4" Command="{Binding LoadPresetCommand}" CommandParameter="9"/>
+        <KeyBinding Gesture="Alt+M" Command="{Binding LoadPresetCommand}" CommandParameter="9"/>
+        <KeyBinding Gesture="Alt+5" Command="{Binding LoadPresetCommand}" CommandParameter="10"/>
+        <KeyBinding Gesture="Alt+S" Command="{Binding LoadPresetCommand}" CommandParameter="10"/>
+    </Window.InputBindings>
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="brush1" Color="#3A3E46"/>
+        <SolidColorBrush x:Key="brush2" Color="#2C2C2C"/>
+        <SolidColorBrush x:Key="brush3" Color="#FCB315"/>
+        <SolidColorBrush x:Key="brush4" Color="White"/>
+        <SolidColorBrush x:Key="brush5" Color="#2C3139"/>
+
+        <Converters:NumberSubtractionConverter x:Key="numberSubtractionConverter"/>
+        <Converters:NumberDivisionConverter x:Key="numberDivisionConverter"/>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource brush2}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Drag container -->
+        <Grid Grid.Row="0" Grid.RowSpan="2" Margin="0,0,0,15" Background="{StaticResource brush2}">
+            <Grid.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding WindowMaximizeCommand}"/>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding WindowDragCommand}"/>
+            </Grid.InputBindings>
+        </Grid>
+
+        <!-- Title bar -->
+        <Grid Grid.Row="0" Background="{StaticResource brush1}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Icon, title and buttons -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Width" Value="auto"/>
+                        <Setter Property="Foreground" Value="{StaticResource brush3}"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="15,0,15,0"/>
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                        <Setter Property="VerticalAlignment" Value="Stretch"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="FontSize" Value="12"/>
+                    </Style>
+                </StackPanel.Resources>
+
+                <Image Margin="5">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="Ctrl+LeftClick" Command="{Binding BuildVersionCommand}"/>
+                    </Image.InputBindings>
+                    <Image.Source>
+                        <BitmapImage DecodePixelWidth="128" DecodePixelHeight="128" UriSource="pack://application:,,,/MainTool;component/Images/mainToolWindowIcon.png"/>
+                    </Image.Source>
+                </Image>
+                <TextBlock Text="{Binding Title, ElementName=window}" Foreground="{StaticResource brush4}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="10,12,30,0"/>
+                <Button Content="Завантажити граф" Command="{Binding LoadGraphCommand}"/>
+                <Button Content="Зберегти результат" Command="{Binding SaveResultCommand}"/>
+                <Button Content="Зберегти граф" Command="{Binding SaveGraphCommand}"/>
+                <Button Content="Про авторів" Command="{Binding AboutCommand}"/>
+
+            </StackPanel>
+
+            <!-- Drag control -->
+            <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TextBlock.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding WindowMaximizeCommand}"/>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding WindowDragCommand}"/>
+                </TextBlock.InputBindings>
+            </TextBlock>
+
+            <!-- Main window buttons -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Width" Value="50"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="19"/>
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="VerticalAlignment" Value="Stretch"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </StackPanel.Resources>
+
+                <Button Command="{Binding WindowMinimizeCommand}">
+                    <Grid Name="minimizeButtonGrid">
+                        <Line Stroke="{StaticResource brush3}" StrokeThickness="2" X1="0" Y1="{Binding ActualHeight, ElementName=minimizeButtonGrid, Converter={StaticResource numberDivisionConverter}, ConverterParameter=2}" X2="{Binding ActualWidth, ElementName=minimizeButtonGrid}" Y2="{Binding ActualHeight, ElementName=minimizeButtonGrid, Converter={StaticResource numberDivisionConverter}, ConverterParameter=2}"/>
+                    </Grid>
+                </Button>
+                <Button Command="{Binding WindowMaximizeCommand}">
+                    <ContentControl>
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding WindowState}" Value="Normal">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Grid>
+                                                        <Rectangle Stroke="{StaticResource brush3}" StrokeThickness="2"/>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding WindowState}" Value="Maximized">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Grid>
+                                                        <Rectangle Fill="{StaticResource brush3}" StrokeThickness="0"/>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+                </Button>
+                <Button Command="{Binding WindowCloseCommand}">
+                    <Grid Name="closeButtonGrid">
+                        <Line Stroke="{StaticResource brush3}" StrokeThickness="2" X1="0" Y1="0" X2="{Binding ActualWidth, ElementName=closeButtonGrid}" Y2="{Binding ActualHeight, ElementName=closeButtonGrid}"/>
+                        <Line Stroke="{StaticResource brush3}" StrokeThickness="2" X1="0" Y1="{Binding ActualHeight, ElementName=closeButtonGrid}" X2="{Binding ActualWidth, ElementName=closeButtonGrid}" Y2="0"/>
+                    </Grid>
+                </Button>
+
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Graph control -->
+            <GraphX:ZoomControl Grid.Column="0" Background="{StaticResource brush1}" Margin="21,30,15,31" Content="{Binding VisualGraphArea, Mode=OneTime}" Name="graphZoom" GraphX:ZoomControl.ViewFinderVisibility="{Binding GraphZoomFinderVisibility, Mode=TwoWay}">
+                <GraphX:ZoomControl.Resources>
+                    <Style TargetType="GraphX:EdgeLabelControl">
+                        <Setter Property="Foreground" Value="{StaticResource brush4}"/>
+                    </Style>
+                    <Style TargetType="GraphX:EdgeControl">
+                        <Setter Property="Foreground" Value="{StaticResource brush3}"/>
+                    </Style>
+                </GraphX:ZoomControl.Resources>
+            </GraphX:ZoomControl>
+
+            <!-- Corner Design Lines -->
+            <Rectangle Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="1" Fill="{StaticResource brush3}" Width="200" Margin="0,0,0,15"/>
+            <Rectangle Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1" Fill="{StaticResource brush3}" Height="200" Margin="10,0,0,5"/>
+
+            <!-- Trash icon -->
+            <Image Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="40" Height="35" Margin="30,0,0,40">
+                <Image.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding ClearGraphCommand}"/>
+                </Image.InputBindings>
+                <Image.Source>
+                    <BitmapImage UriSource="pack://application:,,,/MainTool;component/Images/clearGraphIcon.png"/>
+                </Image.Source>
+                <Image.ToolTip>
+                    <ToolTip Content="Видалити граф" Foreground="{StaticResource brush3}" Background="{StaticResource brush5}"/>
+                </Image.ToolTip>
+            </Image>
+
+            <!-- Refresh icon -->
+            <Image Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="40" Height="33" Margin="75,0,0,41">
+                <Image.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding RefreshGraphCommand}"/>
+                </Image.InputBindings>
+                <Image.Source>
+                    <BitmapImage UriSource="pack://application:,,,/MainTool;component/Images/refreshGraphIcon.png"/>
+                </Image.Source>
+                <Image.ToolTip>
+                    <ToolTip Content="Перемалювати граф" Foreground="{StaticResource brush3}" Background="{StaticResource brush5}"/>
+                </Image.ToolTip>
+            </Image>
+
+            <!-- Options -->
+            <Grid Grid.Column="1" Margin="15,15,21,15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Container for TaskType and initial nodes -->
+                <Grid Grid.Row="0" Background="{StaticResource brush1}">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <Views:RowDefinitionHiddenable Height="auto">
+                            <Views:RowDefinitionHiddenable.Style>
+                                <Style TargetType="RowDefinition">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.ShortestWay}">
+                                            <Setter Property="Views:RowDefinitionHiddenable.IsVisible" Value="False"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.MaxFlow}">
+                                            <Setter Property="Views:RowDefinitionHiddenable.IsVisible" Value="True"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Views:RowDefinitionHiddenable.Style>
+                        </Views:RowDefinitionHiddenable>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="190" Name="firstOptionsGrid_col0"/>
+                        <ColumnDefinition Width="105" Name="firstOptionsGrid_col1"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock" x:Key="optionsTextBlockStyle">
+                            <Setter Property="Foreground" Value="{StaticResource brush3}"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="10"/>
+                        </Style>
+                        <Style TargetType="ComboBox" x:Key="optionsComboBoxStyle">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="10"/>
+                            <Setter Property="Height" Value="25"/>
+                        </Style>
+                    </Grid.Resources>
+
+                    <TextBlock Text="Тип задачі" Grid.Row="0" Grid.Column="0" Style="{StaticResource optionsTextBlockStyle}"/>
+                    <TextBlock Text="Стартова вершина" Grid.Row="1" Grid.Column="0">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock" BasedOn="{StaticResource optionsTextBlockStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.ShortestWay}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.MaxFlow}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <TextBlock Text="Джерело" Grid.Row="1" Grid.Column="0">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock" BasedOn="{StaticResource optionsTextBlockStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.ShortestWay}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.MaxFlow}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <TextBlock Text="Стік" Grid.Row="2" Grid.Column="0" Style="{StaticResource optionsTextBlockStyle}"/>
+                    <ComboBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="80,10,10,10" DisplayMemberPath="DisplayName" ItemsSource="{WPF:EnumToItemsSource {x:Type Enums:TaskType}}" SelectedValue="{Binding SelectedTaskType, Delay=10}" SelectedValuePath="Value" Style="{StaticResource optionsComboBoxStyle}"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding InitialNodeItems, Mode=OneWay}" SelectedValue="{Binding InitialNode, Mode=TwoWay}">
+                        <ComboBox.Style>
+                            <Style TargetType="ComboBox" BasedOn="{StaticResource optionsComboBoxStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.ShortestWay}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.MaxFlow}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                    </ComboBox>
+                    <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SourceNodeItems, Mode=OneWay}" SelectedValue="{Binding SourceNode, Mode=TwoWay}">
+                        <ComboBox.Style>
+                            <Style TargetType="ComboBox" BasedOn="{StaticResource optionsComboBoxStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.ShortestWay}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.MaxFlow}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                    </ComboBox>
+                    <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding TargetNodeItems, Mode=OneWay}" SelectedValue="{Binding TargetNode, Mode=TwoWay}" Style="{StaticResource optionsComboBoxStyle}"/>
+
+                </Grid>
+
+                <!-- Adding/Removing container -->
+                <Grid Grid.Row="1" Background="{StaticResource brush1}" Margin="0,10,0,10">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding Width, ElementName=firstOptionsGrid_col0}"/>
+                        <ColumnDefinition Width="{Binding Width, ElementName=firstOptionsGrid_col1}"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="{StaticResource brush3}"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="10"/>
+                        </Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="10"/>
+                            <Setter Property="Height" Value="25"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        </Style>
+                    </Grid.Resources>
+
+                    <TextBlock Text="Перша вершина" Grid.Row="0" Grid.Column="0"/>
+                    <TextBlock Text="Друга вершина" Grid.Row="1" Grid.Column="0"/>
+                    <TextBlock Text="{Binding EditConnectionWeightLabel, Mode=OneWay}" Grid.Row="2" Grid.Column="0"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding EditGraphConnection_Start, Mode=OneWayToSource}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding EditGraphConnection_End, Mode=OneWayToSource}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding EditGraphConnection_Weight, Mode=OneWayToSource}"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" Margin="10" Height="30" HorizontalAlignment="Center">
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Width" Value="100"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="{StaticResource brush4}"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource brush3}"/>
+                                <Setter Property="BorderThickness" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+
+                        <Button Content="Додати" Command="{Binding EditGraphConnection_AddCommand}" Margin="0,0,20,0"/>
+                        <Button Content="Видалити" Command="{Binding EditGraphConnection_RemoveCommand}"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+                <!-- Result container -->
+                <Grid Grid.Row="2" Background="{StaticResource brush1}">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <Views:RowDefinitionHiddenable Height="12">
+                            <Views:RowDefinitionHiddenable.Style>
+                                <Style TargetType="RowDefinition">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.ShortestWay}">
+                                            <Setter Property="Views:RowDefinitionHiddenable.IsVisible" Value="False"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.MaxFlow}">
+                                            <Setter Property="Views:RowDefinitionHiddenable.IsVisible" Value="True"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Views:RowDefinitionHiddenable.Style>
+                        </Views:RowDefinitionHiddenable>
+                        <Views:RowDefinitionHiddenable Height="auto">
+                            <Views:RowDefinitionHiddenable.Style>
+                                <Style TargetType="RowDefinition">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.ShortestWay}">
+                                            <Setter Property="Views:RowDefinitionHiddenable.IsVisible" Value="False"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedTaskType}" Value="{x:Static Enums:TaskType.MaxFlow}">
+                                            <Setter Property="Views:RowDefinitionHiddenable.IsVisible" Value="True"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Views:RowDefinitionHiddenable.Style>
+                        </Views:RowDefinitionHiddenable>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="{Binding ResultsTitle, Mode=OneWay}" Grid.Row="0" FontSize="17" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{StaticResource brush4}" Margin="10" FontWeight="Bold"/>
+                    <Grid Grid.Row="1" HorizontalAlignment="Left" Width="{Binding ViewportWidth, ElementName=resultItemsScrollViewer}">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="210" Name="resultFirstColumn"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="{StaticResource brush3}"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                            </Style>
+                        </Grid.Resources>
+
+                        <TextBlock Text="{Binding ResultsFirstColumnHeader, Mode=OneWay}" Grid.Column="0" HorizontalAlignment="Left" Margin="20,10,50,10" TextWrapping="Wrap" TextAlignment="Center"/>
+                        <TextBlock Text="{Binding ResultsSecondColumnHeader, Mode=OneWay}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+
+                    </Grid>
+                    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Name="resultItemsScrollViewer">
+                        <ListView ItemsSource="{Binding Result, Mode=OneWay}" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Stretch">
+
+                            <ListView.Template>
+                                <ControlTemplate>
+                                    <ItemsPresenter/>
+                                </ControlTemplate>
+                            </ListView.Template>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalAlignment="Stretch">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="{Binding ActualWidth, ElementName=resultFirstColumn}"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Column="0" HorizontalAlignment="Left" Margin="15,0,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Foreground="{StaticResource brush3}" Background="{StaticResource brush5}" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="5">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding DataContext.SelectedTaskType, ElementName=resultItemsScrollViewer}" Value="{x:Static Enums:TaskType.ShortestWay}">
+                                                                <Setter Property="Text" Value=" H "/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding DataContext.SelectedTaskType, ElementName=resultItemsScrollViewer}" Value="{x:Static Enums:TaskType.MaxFlow}">
+                                                                <Setter Property="Text" Value=" d "/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                            <TextBox Text="{Binding AsDouble, Mode=OneWay}" Grid.Column="1" Foreground="{StaticResource brush4}" VerticalAlignment="Center" HorizontalAlignment="Stretch" IsReadOnly="True" IsReadOnlyCaretVisible="True" Background="Transparent" BorderThickness="0" Margin="10,5,5,5"/>
+                                        </Grid>
+
+                                        <TextBox Text="{Binding AsShortString, Mode=OneWay}" Grid.Column="1" Foreground="{StaticResource brush4}" VerticalAlignment="Center" HorizontalAlignment="Center" IsReadOnly="True" IsReadOnlyCaretVisible="True" Background="Transparent" BorderThickness="0" TextAlignment="Center" Margin="5"/>
+
+                                        <Rectangle Fill="{StaticResource brush2}" Height="2" StrokeThickness="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="12,5,12,0"/>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+                    </ScrollViewer>
+                    <Rectangle Grid.Row="3" Fill="{StaticResource brush3}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="18,5,18,5"/>
+                    <Grid Grid.Row="4" Width="{Binding ViewportWidth, ElementName=resultItemsScrollViewer}" HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding Width, ElementName=resultFirstColumn}"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Величина максимального потоку на мережі (b*)" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,5,20,10" Foreground="{StaticResource brush3}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding ResultTotalValue, Mode=OneWay}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource brush4}"/>
+
+                    </Grid>
+                    <ScrollViewer Grid.Row="1" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brush1}" Visibility="{Binding ResultMessageVisibility, Mode=OneWay}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <TextBlock TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="{StaticResource brush3}" FontSize="20" Text="{Binding ResultMessage, Mode=OneWay}" Margin="20" Width="210"/>
+                    </ScrollViewer>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

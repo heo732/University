@@ -1,0 +1,48 @@
+﻿<Window x:Class="MainTool.Views.CustomMessageBoxWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MainTool.Views"
+             ResizeMode="CanResizeWithGrip"
+             WindowStyle="None"
+             AllowsTransparency="True"
+             Title="{Binding WindowTitle, Mode=OneWay}"
+             WindowState="{Binding WindowState, Mode=TwoWay}"
+             WindowStartupLocation="CenterScreen"
+             SizeToContent="{Binding WindowSizeToContent, Mode=TwoWay}"
+             MinHeight="200" MinWidth="200">
+
+    <Window.Icon>
+        <BitmapImage DecodePixelWidth="128" DecodePixelHeight="128" UriSource="pack://application:,,,/MainTool;component/Images/mainToolWindowIcon.png"/>
+    </Window.Icon>
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="brush1" Color="#3A3E46"/>
+        <SolidColorBrush x:Key="brush2" Color="#2C2C2C"/>
+        <SolidColorBrush x:Key="brush3" Color="#FCB315"/>
+        <SolidColorBrush x:Key="brush4" Color="White"/>
+    </Window.Resources>
+    
+    <Grid Background="{StaticResource brush2}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" MinHeight="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" MinHeight="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="{Binding WindowTitle, Mode=OneWay}" Padding="15" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="{StaticResource brush3}" TextAlignment="Center">
+            <TextBlock.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding WindowMaximizeCommand}"/>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding WindowDragCommand}"/>
+            </TextBlock.InputBindings>
+        </TextBlock>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Name="massageScrollViewer">
+            <TextBox TextWrapping="Wrap" Text="{Binding Message, Mode=OneWay}" Foreground="{StaticResource brush4}" Margin="15,0,15,0" Background="Transparent" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True" IsReadOnlyCaretVisible="True" TextAlignment="Center"/>
+        </ScrollViewer>
+        <Button Grid.Row="2" Content="Закрити" IsDefault="True" IsCancel="True" Margin="15" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="30" MinWidth="150" Background="Transparent" BorderThickness="3" BorderBrush="{StaticResource brush3}" Foreground="{StaticResource brush4}"/>
+
+    </Grid>
+
+</Window>
