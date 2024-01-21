@@ -1,0 +1,95 @@
+﻿<Window x:Class="Constructor.GeneralWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Constructor"
+        mc:Ignorable="d"
+        Title="GeneralWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="1" BorderBrush="LightGray">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Background="Transparent" BorderThickness="0" Width="30" HorizontalAlignment="Left" Margin="10,5,10,5">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="build.png"/>
+                        <TextBlock Text="Build" Foreground="LightSlateGray"/>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="1" Content="^" Width="20" Background="#55dce0dd" BorderThickness="0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Margin="0,-5,0,0" FontSize="11" HorizontalAlignment="Right"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ListView>
+                    <ListViewItem BorderBrush="LightGray">General</ListViewItem>
+                    <ListViewItem BorderBrush="LightGray">Files</ListViewItem>
+                    <ListViewItem BorderBrush="LightGray">Features</ListViewItem>
+                    <ListViewItem BorderBrush="LightGray">Components</ListViewItem>
+                    <ListViewItem BorderBrush="LightGray">Dialogs Sequence</ListViewItem>
+                    <ListViewItem BorderBrush="LightGray">Execution Sequence</ListViewItem>
+                    <ListViewItem BorderBrush="LightGray">Custom Actions</ListViewItem>
+                    <ListViewItem BorderBrush="LightGray">Registry</ListViewItem>
+                    <ListViewItem BorderBrush="LightGray">COM</ListViewItem>
+                    <ListViewItem BorderBrush="LightGray">Shortcuts</ListViewItem>
+                </ListView>
+            </ScrollViewer>
+            <Rectangle Grid.Column="1" Fill="LightGray"/>
+            <TabControl Grid.Column="2" HorizontalContentAlignment="Left">
+                <TabItem Header="General" Width="60">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Product Name" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="1" Text="Product Code" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="2" Text="Upgrade Code" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="3" Text="Version" VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" Grid.Row="0" Margin="2" Text="Test Product"/>
+                            <TextBox Grid.Column="1" Grid.Row="1" Margin="2" Text="6E9A2FCD-8E4E-467D-8615-505D772B16AE"/>
+                            <TextBox Grid.Column="1" Grid.Row="2" Margin="2" Text="37571384-BBB1-41DE-8EF9-29E990020AB4"/>
+                            <TextBox Grid.Column="1" Grid.Row="3" Margin="2" Text="1.0.0.0"/>
+                            <TextBox Grid.Column="1" Grid.Row="4" Margin="2"/>
+                            <TextBox Grid.Column="1" Grid.Row="5" Margin="2"/>
+                            <TextBox Grid.Column="1" Grid.Row="6" Margin="2"/>
+                            <TextBox Grid.Column="1" Grid.Row="7" Margin="2"/>
+                            <TextBox Grid.Column="1" Grid.Row="8" Margin="2"/>
+                            <TextBox Grid.Column="1" Grid.Row="9" Margin="2"/>
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+            <Button Grid.Column="2" Content="x" Width="20" Height="20" Foreground="DarkGray" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" Margin="42,1,0,0" />
+        </Grid>
+    </Grid>
+</Window>
