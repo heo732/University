@@ -1,0 +1,129 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#pragma argsused
+#include <iostream>
+using namespace std;
+#include <alloc.h>
+#include <windows.h>
+#include <stdio.h>
+#include <string.h> 
+//---------------------------------------------------------------------------
+typedef struct OMovie
+{
+	char name[500];
+	int seans;
+	int tiket;
+	double count_per_seans;	
+  OMovie *prev;
+  OMovie *next;
+}TMovie;
+//---------------------------------------------------------------------------
+void InputNotSort(TMovie *&Movie,TMovie a)
+{
+  TMovie *tmp;
+  if(Movie==NULL)
+  {
+    Movie=new TMovie;
+    Movie->prev=NULL;
+    Movie->next=NULL;
+    strcpy(Movie->name,a.name);
+    Movie->seans=a.seans;
+    Movie->tiket=a.tiket;
+    Movie->count_per_seans=a.count_per_seans;
+  }
+  else
+  {
+    tmp=new TMovie;
+    strcpy(tmp->name,a.name);
+    tmp->seans=a.seans;
+    tmp->tiket=a.tiket;
+    tmp->count_per_seans=a.count_per_seans;
+    tmp->prev=Movie;
+    tmp->next=NULL;
+    Movie->next=tmp;
+    Movie=tmp;
+    tmp=NULL;
+  }
+}
+//---------------------------------------------------------------------------
+void InputWithSort(TMovie *&Movie,TMovie a)
+{	
+	TMovie *tmp;
+	if(Movie==NULL)
+  {
+    Movie=new TMovie;
+    Movie->prev=NULL;
+    Movie->next=NULL;
+    strcpy(Movie->name,a.name);
+    Movie->seans=a.seans;
+    Movie->tiket=a.tiket;
+    Movie->count_per_seans=a.count_per_seans;
+  }
+  else
+  {
+    while(Movie->prev!=NULL)
+      Movie=Movie->prev;
+    while(Movie->next->count_per_seans>a.count_per_seans && Movie->next!=NULL)
+      Movie=Movie->next;
+    if(Movie->count_per_seans>=a.count_per_seans)
+    {      
+      tmp=new TMovie;
+      strcpy(tmp->name,a.name);
+      tmp->seans=a.seans;
+      tmp->tiket=a.tiket;
+      tmp->count_per_seans=a.count_per_seans;
+      tmp->next=Movie->next;
+      tmp->prev=Movie;      
+      Movie->next->prev=tmp;
+      Movie->next=tmp;
+      while(Movie->next!=NULL)
+      Movie=Movie->next;
+    }
+  }  
+}
+//---------------------------------------------------------------------------
+void PrintMovie(TMovie *Movie)
+{
+  if(Movie!=NULL)
+  {  
+    if(Movie->prev!=NULL)
+      PrintMovie(Movie->prev);  
+    cout<<Movie->name<<" "<<Movie->seans<<" "<<Movie->tiket<<" "<<Movie->count_per_seans<<endl;
+  }  
+}
+//---------------------------------------------------------------------------
+int main()
+{
+SetConsoleCP(1251);
+SetConsoleOutputCP(1251);
+
+TMovie *Movie=NULL,*MovieSort=NULL,a;
+char c;
+
+//читання записів
+do
+{
+  cout<<"Бажаєте ввести запис? [1/0]: ";
+  cin>>c;
+  if(c=='1')
+  {
+    cout<<"Назва фільму | Сеанси | Білети"<<endl;    
+    scanf("%s%d%d",&a.name,&a.seans,&a.tiket);
+    a.count_per_seans=a.tiket/a.seans;
+    InputNotSort(Movie,a);
+    InputWithSort(MovieSort,a);
+  }
+}  
+while(c=='1');  
+////////////////
+cout<<endl<<"Вхідний масив:"<<endl<<"( Фільм | Сеанси | Білети | Середнє відвідування )"<<endl;
+FPrint(Movie);//друк всіх записів
+
+cout<<endl<<"Впороядковано по середньому відвідуванню:"<<endl<<"( Фільм | Сеанси | Білети | Середнє відвідування )"<<endl;
+FPrint(MovieSort);
+
+cout<<endl;
+system("pause");
+return 0;
+}
+//--------------------------------------------------------------------------- 
