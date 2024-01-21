@@ -1,0 +1,34 @@
+object FormAlpha: TFormAlpha
+  Left = 356
+  Top = 115
+  Width = 338
+  Height = 193
+  Caption = #1050#1091#1090' '#1084#1110#1078' '#1086#1089#1085#1086#1074#1086#1102' '#1110' '#1073#1110#1095#1085#1086#1102
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Verdana'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 16
+  object Button1: TButton
+    Left = 16
+    Top = 40
+    Width = 137
+    Height = 73
+    Caption = 'Button1'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 168
+    Top = 40
+    Width = 137
+    Height = 73
+    Caption = 'Button2'
+    TabOrder = 1
+    OnClick = Button2Click
+  end
+end

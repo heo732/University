@@ -1,0 +1,350 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "ClassMatrix.h"
+#pragma package(smart_init)
+#include <time.h>
+#include <fstream>
+#include <iostream>
+using namespace std;
+//---------------------------------------------------------------------------
+unsigned int TMatrix::cntObjects = 0;
+//---------------------------------------------------------------------------
+//Matrix 4x4 = 0
+TMatrix::TMatrix(){
+  pointer = new short*[4];
+
+  for(unsigned int i=0; i<4; i++){
+    pointer[i] = new short[4];
+    for(unsigned int j=0; j<4; j++)
+      pointer[i][j] = 0;
+  }
+
+  RowCount = 4;
+  ColCount = 4;
+
+  cntObjects++;
+}
+//---------------------------------------------------------------------------
+//NxN = 0
+TMatrix::TMatrix(unsigned int N){
+  pointer = new short*[N];
+
+  for(unsigned int i=0; i<N; i++){
+    pointer[i] = new short[N];
+    for(unsigned int j=0; j<N; j++)
+      pointer[i][j] = 0;
+  }
+
+  RowCount = N;
+  ColCount = N;
+
+  cntObjects++;
+}
+//---------------------------------------------------------------------------
+TMatrix::TMatrix(unsigned int N, unsigned int M, short value){
+  pointer = new short*[N];
+
+  for(unsigned int i=0; i<N; i++){
+    pointer[i] = new short[M];
+    for(unsigned int j=0; j<M; j++)
+      pointer[i][j] = value;
+  }
+
+  RowCount = N;
+  ColCount = M;
+
+  cntObjects++;
+}
+//---------------------------------------------------------------------------
+TMatrix::~TMatrix(){
+  if(pointer != NULL){
+    for(unsigned int i=0; i<RowCount; i++)
+      delete pointer[i];
+    delete pointer;
+    pointer = NULL;
+  }
+}
+//---------------------------------------------------------------------------
+void TMatrix::ReadFromStg(TStringGrid *stg){
+
+  if(pointer != NULL){
+    for(unsigned int i=0; i<RowCount; i++)
+      delete pointer[i];
+    delete pointer;
+    pointer = NULL;
+  }
+
+  RowCount = stg->RowCount-1;
+  ColCount = stg->ColCount-1;
+  pointer = new short*[RowCount];
+  for(unsigned int i=0; i<RowCount; i++)
+    pointer[i] = new short[ColCount];
+
+  for(int i=1; i<stg->RowCount; i++)
+    for(int j=1; j<stg->ColCount; j++)
+      if( !(TryStrToInt(stg->Cells[j][i], 0)) )
+        pointer[i-1][j-1] = 0;
+      else
+        pointer[i-1][j-1] = StrToInt(stg->Cells[j][i]);
+}
+//---------------------------------------------------------------------------
+short RandomShortValue(){
+
+  short value = (rand() % 200) - 100;
+
+  return value;
+}
+//---------------------------------------------------------------------------
+void TMatrix::RandomFilling(){
+
+  srand(time(0));
+
+  for(unsigned int i=0; i<RowCount; i++)
+    for(unsigned int j=0; j<ColCount; j++)
+      pointer[i][j] = RandomShortValue();
+}
+//---------------------------------------------------------------------------
+//0 - good, 1 - file is not open
+char TMatrix::ReadFromFile(String FileName){
+
+  ifstream file(FileName.c_str());
+
+  if(!file.is_open()) //якщо файл не відкрито
+    return 1;
+  else{
+
+    for(unsigned int i=0; i<RowCount; i++)
+      for(unsigned int j=0; j<ColCount; j++)
+        file>>pointer[i][j];
+    file.close();
+
+    return 0;
+  }
+}
+//--------------------------------------------------------------------------
+void TMatrix::PrintToStg(TStringGrid *&stg) const{
+  stg->RowCount = RowCount+1;
+  stg->ColCount = ColCount+1;
+  stg->FixedRows = 1;
+  stg->FixedCols = 1;
+
+  for(unsigned int j=0; j<ColCount; j++)
+    stg->Cells[j+1][0] = IntToStr(j+1);
+
+  for(unsigned int i=0; i<RowCount; i++){
+    for(unsigned int j=0; j<ColCount; j++)
+      stg->Cells[j+1][i+1] = IntToStr(pointer[i][j]);
+
+    stg->Cells[0][i+1] = IntToStr(i+1);
+  }
+}
+//---------------------------------------------------------------------------
+unsigned int TMatrix::GetRowCount() const{
+  return RowCount;
+}
+//---------------------------------------------------------------------------
+unsigned int TMatrix::GetColCount() const{
+  return ColCount;
+}
+//---------------------------------------------------------------------------
+char TMatrix::GetStan() const{
+  return stan;
+}
+//---------------------------------------------------------------------------
+unsigned int TMatrix::GetCntObjects() const{
+  return cntObjects;
+}
+//---------------------------------------------------------------------------
+short TMatrix::GetElValue(unsigned int row, unsigned int col){
+  if(row > RowCount-1 || col > ColCount-1){ //Помилка. Вихід за межі матриці
+    stan = 1;
+    return 0;
+  }
+  else{
+    stan = 0;
+    return pointer[row][col];
+  }
+}
+//---------------------------------------------------------------------------
+void TMatrix::Assign(unsigned int row=0, unsigned int col=0, short value=1){
+  if(row > RowCount-1 || col > ColCount-1){ //Помилка. Вихід за межі матриці
+    stan = 1;
+  }
+  else{
+    pointer[row][col] = value;
+    stan = 0;
+  }
+}
+//---------------------------------------------------------------------------
+TMatrix& TMatrix::operator = (TMatrix& in){
+
+  if(pointer != NULL){
+    for(unsigned int i=0; i<RowCount; i++)
+      delete pointer[i];
+    delete pointer;
+    pointer = NULL;
+  }
+
+  RowCount = in.GetRowCount();
+  pointer = new short*[RowCount];
+  ColCount = in.GetColCount();
+
+  for(unsigned int i=0; i<RowCount; i++){
+    pointer[i] = new short[ColCount];
+
+    for(unsigned int j=0; j<ColCount; j++)
+      pointer[i][j] = in.GetElValue(i, j);
+  }
+
+  return *this;
+}
+//--------------------------------------------------------------------------
+TMatrix& TMatrix::operator += (TMatrix& in){
+
+  if(RowCount != in.GetRowCount() || ColCount != in.GetColCount()){
+    stan = 2;
+    return *this;
+  }
+  else{
+    stan = 0;
+
+    for(unsigned int i=0; i<RowCount; i++)
+      for(unsigned int j=0; j<ColCount; j++)
+        pointer[i][j] += in.GetElValue(i, j);
+
+    return *this;
+  }
+}
+//--------------------------------------------------------------------------
+TMatrix& TMatrix::operator -= (TMatrix& in){
+
+  if(RowCount != in.GetRowCount() || ColCount != in.GetColCount()){
+    stan = 2;
+    return *this;
+  }
+  else{
+    stan = 0;
+
+    for(unsigned int i=0; i<RowCount; i++)
+      for(unsigned int j=0; j<ColCount; j++)
+        pointer[i][j] -= in.GetElValue(i, j);
+
+    return *this;
+  }
+}
+//--------------------------------------------------------------------------
+TMatrix& TMatrix::operator *= (TMatrix& in){
+
+  if(ColCount != in.GetRowCount()){
+    stan = 2;
+    return *this;
+  }
+  else{
+    stan = 0;
+    TMatrix temp(RowCount, in.GetColCount(), 0);
+
+    for(unsigned int i=0; i<temp.GetRowCount(); i++)
+      for(unsigned int j=0; j<temp.GetColCount(); j++)
+        for(unsigned int p=0; p<ColCount; p++)
+          temp.pointer[i][j] += pointer[i][p] * in.GetElValue(j, q);
+
+    *this = temp;
+
+    return *this;
+  }
+}
+//--------------------------------------------------------------------------
+TMatrix& TMatrix::operator *= (short value){
+
+  for(unsigned int i=0; i<RowCount; i++)
+    for(unsigned int j=0; j<ColCount; j++)
+      pointer[i][j] *= value;
+
+  return *this;
+
+}
+//--------------------------------------------------------------------------
+long TMatrix::MultiplyScalar(TMatrix& in){
+
+  if(RowCount != in.GetRowCount() || ColCount != in.GetColCount()){
+    stan = 2;
+    return 0;
+  }
+  else{
+    stan = 0;
+    long res = 0;
+
+    for(unsigned int i=0; i<RowCount; i++)
+      for(unsigned int j=0; j<ColCount; j++)
+        res += pointer[i][j] * in.GetElValue(i, j);
+
+    return res;
+  }
+}
+//--------------------------------------------------------------------------
+bool TMatrix::operator > (TMatrix& in){
+  if(RowCount != in.GetRowCount() || ColCount != in.GetColCount()){
+    stan = 2;
+    return false;
+  }
+  else{
+    stan = 0;
+
+    for(unsigned int i=0; i<RowCount; i++)
+      for(unsigned int j=0; j<ColCount; j++)
+        if(pointer[i][j] <= in.GetElValue(i, j))
+          return false;
+
+    return true;
+  }
+}
+//--------------------------------------------------------------------------
+bool TMatrix::operator < (TMatrix& in){
+  if(RowCount != in.GetRowCount() || ColCount != in.GetColCount()){
+    stan = 2;
+    return false;
+  }
+  else{
+    stan = 0;
+
+    for(unsigned int i=0; i<RowCount; i++)
+      for(unsigned int j=0; j<ColCount; j++)
+        if(pointer[i][j] >= in.GetElValue(i, j))
+          return false;    
+
+    return true;
+  }
+}
+//--------------------------------------------------------------------------
+bool TMatrix::operator != (TMatrix& in){
+  if(RowCount != in.GetRowCount() || ColCount != in.GetColCount()){
+    stan = 2;
+    return false;
+  }
+  else{
+    stan = 0;
+
+    for(unsigned int i=0; i<RowCount; i++)
+      for(unsigned int j=0; j<ColCount; j++)
+        if(pointer[i][j] != in.GetElValue(i, j))
+          return true;
+
+    return false;
+  }
+}
+//--------------------------------------------------------------------------
+bool TMatrix::LessOrNotEqual(TMatrix& in){
+  if(RowCount != in.GetRowCount() || ColCount != in.GetColCount()){
+    stan = 2;
+    return false;
+  }
+  else{
+    stan = 0;
+
+    if(*this < in || *this != in)
+      return true;
+
+    return false;
+  }
+}
+//--------------------------------------------------------------------------

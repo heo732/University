@@ -1,0 +1,47 @@
+//---------------------------------------------------------------------------
+#include <vcl.h>
+#pragma hdrstop
+
+#include "URemoveConfirm.h"
+#include "URemove.h"
+#include "UMain.h"
+#include "TDomain_IP.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm_RemoveConfirm *Form_RemoveConfirm;
+//---------------------------------------------------------------------------
+__fastcall TForm_RemoveConfirm::TForm_RemoveConfirm(TComponent* Owner)
+        : TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm_RemoveConfirm::FormClose(TObject *Sender,
+      TCloseAction &Action)
+{
+  Form_Remove->Show();
+  Form_Remove->Edit_Search->Text = "";
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm_RemoveConfirm::Button_NoClick(TObject *Sender)
+{
+  Form_RemoveConfirm->Close();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm_RemoveConfirm::Button_YesClick(TObject *Sender)
+{
+  TDomain_IP B;
+
+  B.ReadFromFile("BACKUP.txt");
+  B.Add(Grid->Cells[0][0].c_str(), Grid->Cells[1][0].c_str());
+  B.WriteInFile("BACKUP.txt");
+
+  B.ReadFromFile("BASE.txt");
+  B.Remove(Grid->Cells[0][0].c_str());
+  B.WriteInFile("BASE.txt");
+
+  Form_RemoveConfirm->Close();
+
+  B.WriteInGrid(Form_Remove->Grid);
+}
+//---------------------------------------------------------------------------
